@@ -61,7 +61,7 @@ public class AadlBaParserAction implements AnnexParser
                                    ParseErrorReporter errReporter)
                                    throws antlr.RecognitionException
    {
-      if(false == ANNEX_NAME.equalsIgnoreCase(annexName))
+      if(true == ANNEX_NAME.equalsIgnoreCase(annexName))
       {
         return null ;
       }

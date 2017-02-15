@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface FeatureHolder extends ClassifierFeatureHolder, IndexableElement, GroupableElement, IBAVisitable
+public interface FeatureHolder extends ClassifierFeatureHolder, IndexableElement, GroupableElement
 {
   /**
    * <!-- begin-user-doc -->

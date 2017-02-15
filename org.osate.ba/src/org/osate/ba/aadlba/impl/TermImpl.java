@@ -41,11 +41,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.TermImpl#getFactors <em>Factors</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.TermImpl#getMultiplyingOperators <em>Multiplying Operators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -38,13 +38,13 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.IfStatementImpl#getBehaviorActions <em>Behavior Actions</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.IfStatementImpl#getLogicalValueExpression <em>Logical Value Expression</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.IfStatementImpl#isElif <em>Elif</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.IfStatementImpl#getElseStatement <em>Else Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -100,9 +100,9 @@ public class AadlBaFactoryImpl extends EFactoryImpl implements AadlBaFactory
       case AadlBaPackage.BEHAVIOR_VARIABLE: return (EObject)createBehaviorVariable();
       case AadlBaPackage.BEHAVIOR_VARIABLE_HOLDER: return (EObject)createBehaviorVariableHolder();
       case AadlBaPackage.CALLED_SUBPROGRAM_HOLDER: return (EObject)createCalledSubprogramHolder();
+      case AadlBaPackage.CLASSIFIER_FEATURE_PROPERTY_REFERENCE: return (EObject)createClassifierFeaturePropertyReference();
       case AadlBaPackage.CLASSIFIER_PROPERTY_REFERENCE: return (EObject)createClassifierPropertyReference();
       case AadlBaPackage.COMPLETION_RELATIVE_TIMEOUT: return (EObject)createCompletionRelativeTimeout();
-      case AadlBaPackage.CLASSIFIER_FEATURE_PROPERTY_REFERENCE: return (EObject)createClassifierFeaturePropertyReference();
       case AadlBaPackage.DATA_ACCESS_HOLDER: return (EObject)createDataAccessHolder();
       case AadlBaPackage.DATA_ACCESS_PROTOTYPE_HOLDER: return (EObject)createDataAccessPrototypeHolder();
       case AadlBaPackage.DATA_COMPONENT_REFERENCE: return (EObject)createDataComponentReference();
@@ -139,11 +139,11 @@ public class AadlBaFactoryImpl extends EFactoryImpl implements AadlBaFactory
       case AadlBaPackage.PORT_FRESH_VALUE: return (EObject)createPortFreshValue();
       case AadlBaPackage.PORT_PROTOTYPE_HOLDER: return (EObject)createPortPrototypeHolder();
       case AadlBaPackage.PORT_SEND_ACTION: return (EObject)createPortSendAction();
-      case AadlBaPackage.PROPERTY_NAME_HOLDER: return (EObject)createPropertyNameHolder();
       case AadlBaPackage.PROPERTY_ASSOCIATION_HOLDER: return (EObject)createPropertyAssociationHolder();
       case AadlBaPackage.PROPERTY_EXPRESSION_HOLDER: return (EObject)createPropertyExpressionHolder();
-      case AadlBaPackage.PROPERTY_TYPE_HOLDER: return (EObject)createPropertyTypeHolder();
+      case AadlBaPackage.PROPERTY_NAME_HOLDER: return (EObject)createPropertyNameHolder();
       case AadlBaPackage.PROPERTY_SET_PROPERTY_REFERENCE: return (EObject)createPropertySetPropertyReference();
+      case AadlBaPackage.PROPERTY_TYPE_HOLDER: return (EObject)createPropertyTypeHolder();
       case AadlBaPackage.RELATION: return (EObject)createRelation();
       case AadlBaPackage.SIMPLE_EXPRESSION: return (EObject)createSimpleExpression();
       case AadlBaPackage.STRUCT_UNION_ELEMENT: return (EObject)createStructUnionElement();
@@ -162,6 +162,7 @@ public class AadlBaFactoryImpl extends EFactoryImpl implements AadlBaFactory
       case AadlBaPackage.UPPER_BOUND: return (EObject)createUpperBound();
       case AadlBaPackage.VALUE_EXPRESSION: return (EObject)createValueExpression();
       case AadlBaPackage.WHILE_OR_DO_UNTIL_STATEMENT: return (EObject)createWhileOrDoUntilStatement();
+      case AadlBaPackage.INTERNAL_FEATURE_HOLDER: return (EObject)createInternalFeatureHolder();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -1058,6 +1059,17 @@ public class AadlBaFactoryImpl extends EFactoryImpl implements AadlBaFactory
   {
     WhileOrDoUntilStatementImpl whileOrDoUntilStatement = new WhileOrDoUntilStatementImpl();
     return whileOrDoUntilStatement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public InternalFeatureHolder createInternalFeatureHolder()
+  {
+    InternalFeatureHolderImpl internalFeatureHolder = new InternalFeatureHolderImpl();
+    return internalFeatureHolder;
   }
 
   /**

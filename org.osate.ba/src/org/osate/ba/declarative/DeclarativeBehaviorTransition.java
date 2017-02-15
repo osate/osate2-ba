@@ -22,6 +22,7 @@
 package org.osate.ba.declarative ;
 
 import org.eclipse.emf.common.util.EList ;
+import org.osate.ba.aadlba.BehaviorState ;
 import org.osate.ba.aadlba.BehaviorTransition ;
 
 /**
@@ -31,59 +32,32 @@ import org.osate.ba.aadlba.BehaviorTransition ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.DeclarativeBehaviorTransition#getSrcStates <em>Src States</em>}</li>
- *   <li>{@link org.osate.ba.declarative.DeclarativeBehaviorTransition#getDestState <em>Dest State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.declarative.DeclarativePackage#getDeclarativeBehaviorTransition()
  * @model
  * @generated
  */
 public interface DeclarativeBehaviorTransition extends BehaviorTransition,
-                                              DeclarativeBehaviorElement
+                                               DeclarativeBehaviorElement
 {
   /**
-   * Returns the value of the '<em><b>Src States</b></em>' containment reference list.
-   * The list contents are of type {@link org.osate.ba.declarative.Identifier}.
+   * Returns the value of the '<em><b>Src States</b></em>' reference list.
+   * The list contents are of type {@link org.osate.ba.aadlba.BehaviorState}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Src States</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Src States</em>' containment reference list.
+   * @return the value of the '<em>Src States</em>' reference list.
    * @see org.osate.ba.declarative.DeclarativePackage#getDeclarativeBehaviorTransition_SrcStates()
-   * @model containment="true" required="true"
+   * @model required="true"
    * @generated
    */
-  EList<Identifier> getSrcStates() ;
-
-  /**
-   * Returns the value of the '<em><b>Dest State</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Dest State</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Dest State</em>' containment reference.
-   * @see #setDestState(Identifier)
-   * @see org.osate.ba.declarative.DeclarativePackage#getDeclarativeBehaviorTransition_DestState()
-   * @model containment="true" required="true"
-   * @generated
-   */
-  Identifier getDestState() ;
-
-  /**
-   * Sets the value of the '{@link org.osate.ba.declarative.DeclarativeBehaviorTransition#getDestState <em>Dest State</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Dest State</em>' containment reference.
-   * @see #getDestState()
-   * @generated
-   */
-  void setDestState(Identifier value) ;
+  EList<BehaviorState> getSrcStates() ;
 
 } // DeclarativeBehaviorTransition

@@ -35,10 +35,10 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.ClassifierPropertyReferenceImpl#getClassifier <em>Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

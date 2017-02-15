@@ -39,6 +39,7 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.FactorImpl#getFirstValue <em>First Value</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.FactorImpl#getSecondValue <em>Second Value</em>}</li>
@@ -46,7 +47,6 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  *   <li>{@link org.osate.ba.aadlba.impl.FactorImpl#getUnaryNumericOperator <em>Unary Numeric Operator</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.FactorImpl#getUnaryBooleanOperator <em>Unary Boolean Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

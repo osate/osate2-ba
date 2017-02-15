@@ -37,19 +37,18 @@ import org.osate.ba.aadlba.ValueVariable ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.Reference#getIds <em>Ids</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.declarative.DeclarativePackage#getReference()
  * @model
  * @generated
  */
-public interface Reference extends ActualPortHolder,
-                          DeclarativeBehaviorElement, IntegerValueVariable,
-                          ValueVariable, ElementValues, Target,
-                          DispatchTriggerCondition, DispatchTrigger
+public interface Reference extends ActualPortHolder, DeclarativeBehaviorElement,
+                           IntegerValueVariable, ValueVariable, ElementValues,
+                           Target, DispatchTriggerCondition, DispatchTrigger
 {
   /**
    * Returns the value of the '<em><b>Ids</b></em>' containment reference list.
@@ -62,7 +61,7 @@ public interface Reference extends ActualPortHolder,
    * <!-- end-user-doc -->
    * @return the value of the '<em>Ids</em>' containment reference list.
    * @see org.osate.ba.declarative.DeclarativePackage#getReference_Ids()
-   * @model containment="true" required="true"
+   * @model containment="true"
    * @generated
    */
   EList<ArrayableIdentifier> getIds() ;

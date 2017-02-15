@@ -680,6 +680,11 @@ public class AadlBaAdapterFactory extends AdapterFactoryImpl
         return createWhileOrDoUntilStatementAdapter();
       }
       @Override
+      public Adapter caseInternalFeatureHolder(InternalFeatureHolder object)
+      {
+        return createInternalFeatureHolderAdapter();
+      }
+      @Override
       public Adapter caseElement(Element object)
       {
         return createElementAdapter();
@@ -2362,6 +2367,21 @@ public class AadlBaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createWhileOrDoUntilStatementAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.osate.ba.aadlba.InternalFeatureHolder <em>Internal Feature Holder</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.osate.ba.aadlba.InternalFeatureHolder
+   * @generated
+   */
+  public Adapter createInternalFeatureHolderAdapter()
   {
     return null;
   }

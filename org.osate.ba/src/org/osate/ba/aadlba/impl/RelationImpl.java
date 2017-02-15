@@ -37,12 +37,12 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.RelationImpl#getFirstExpression <em>First Expression</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.RelationImpl#getSecondExpression <em>Second Expression</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.RelationImpl#getRelationalOperator <em>Relational Operator</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

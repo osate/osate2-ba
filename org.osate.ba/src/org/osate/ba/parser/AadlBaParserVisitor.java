@@ -1798,11 +1798,6 @@ public class AadlBaParserVisitor<T> extends AbstractParseTreeVisitor<T>
       ctx.result.setCondition(ctx.behavior_condition().result) ;
     }
 
-    id = _decl.createIdentifier() ;
-    id.setId(ctx.destId.getText()) ;
-    setLocationReference(id, ctx.destId) ;
-    ctx.result.setDestState(id) ;
-
     if(ctx.behavior_action_block() != null)
     {
       _ba.getActions().add(ctx.behavior_action_block().result) ;

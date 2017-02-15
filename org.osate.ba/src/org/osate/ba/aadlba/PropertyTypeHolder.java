@@ -33,7 +33,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface PropertyTypeHolder extends PropertyElementHolder, IBAVisitable
+public interface PropertyTypeHolder extends PropertyElementHolder
 {
 
   /**

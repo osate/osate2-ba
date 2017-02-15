@@ -22,6 +22,7 @@
 package org.osate.ba.declarative ;
 
 import org.eclipse.emf.common.util.EList ;
+import org.osate.aadl2.Subprogram ;
 import org.osate.ba.aadlba.CommunicationAction ;
 import org.osate.ba.aadlba.ParameterLabel ;
 import org.osate.ba.aadlba.Target ;
@@ -33,6 +34,7 @@ import org.osate.ba.aadlba.Target ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.CommAction#getParameters <em>Parameters</em>}</li>
  *   <li>{@link org.osate.ba.declarative.CommAction#isPortFreeze <em>Port Freeze</em>}</li>
@@ -42,15 +44,15 @@ import org.osate.ba.aadlba.Target ;
  *   <li>{@link org.osate.ba.declarative.CommAction#getTarget <em>Target</em>}</li>
  *   <li>{@link org.osate.ba.declarative.CommAction#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.osate.ba.declarative.CommAction#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.osate.ba.declarative.CommAction#getSubprogram <em>Subprogram</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.declarative.DeclarativePackage#getCommAction()
  * @model
  * @generated
  */
 public interface CommAction extends CommunicationAction,
-                           DeclarativeBehaviorElement
+                            DeclarativeBehaviorElement
 {
   /**
    * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
@@ -276,5 +278,31 @@ public interface CommAction extends CommunicationAction,
    * @generated
    */
   void setReference(Reference value) ;
+
+  /**
+   * Returns the value of the '<em><b>Subprogram</b></em>' reference.
+   * <!-- begin-user-doc -->
+  	 * <p>
+  	 * If the meaning of the '<em>Subprogram</em>' reference isn't clear,
+  	 * there really should be more of a description here...
+  	 * </p>
+  	 * <!-- end-user-doc -->
+   * @return the value of the '<em>Subprogram</em>' reference.
+   * @see #setSubprogram(Subprogram)
+   * @see org.osate.ba.declarative.DeclarativePackage#getCommAction_Subprogram()
+   * @model
+   * @generated
+   */
+  Subprogram getSubprogram() ;
+
+  /**
+   * Sets the value of the '{@link org.osate.ba.declarative.CommAction#getSubprogram <em>Subprogram</em>}' reference.
+   * <!-- begin-user-doc -->
+  	 * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Subprogram</em>' reference.
+   * @see #getSubprogram()
+   * @generated
+   */
+  void setSubprogram(Subprogram value) ;
 
 } // CommAction

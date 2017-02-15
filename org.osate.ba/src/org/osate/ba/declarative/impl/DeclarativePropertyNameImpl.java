@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.InternalEObject ;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl ;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList ;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList ;
 import org.eclipse.emf.ecore.util.InternalEList ;
 
@@ -44,18 +45,17 @@ import org.osate.ba.declarative.Identifier ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativePropertyNameImpl#getPropertyName <em>Property Name</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativePropertyNameImpl#getField <em>Field</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativePropertyNameImpl#getIndexes <em>Indexes</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
-                                                                               implements
-                                                                               DeclarativePropertyName
+                                         implements DeclarativePropertyName
 {
   /**
    * The cached value of the '{@link #getPropertyName() <em>Property Name</em>}' containment reference.
@@ -78,7 +78,7 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
   protected PropertyNameField field ;
 
   /**
-   * The cached value of the '{@link #getIndexes() <em>Indexes</em>}' reference list.
+   * The cached value of the '{@link #getIndexes() <em>Indexes</em>}' containment reference list.
    * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
    * @see #getIndexes()
@@ -130,10 +130,11 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
     propertyName = newPropertyName ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
-                  oldPropertyName, newPropertyName) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
+                                                             oldPropertyName,
+                                                             newPropertyName) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -153,27 +154,23 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
     {
       NotificationChain msgs = null ;
       if(propertyName != null)
-        msgs =
-              ((InternalEObject) propertyName)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) propertyName).eInverseRemove(this,
+                                                               EOPPOSITE_FEATURE_BASE -
+                                                                     DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
+                                                               null, msgs) ;
       if(newPropertyName != null)
-        msgs =
-              ((InternalEObject) newPropertyName)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newPropertyName).eInverseAdd(this,
+                                                               EOPPOSITE_FEATURE_BASE -
+                                                                     DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
+                                                               null, msgs) ;
       msgs = basicSetPropertyName(newPropertyName, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
-            newPropertyName, newPropertyName)) ;
+                                    DeclarativePackage.DECLARATIVE_PROPERTY_NAME__PROPERTY_NAME,
+                                    newPropertyName, newPropertyName)) ;
   }
 
   /**
@@ -198,10 +195,11 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
     field = newField ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
-                  oldField, newField) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
+                                                             oldField,
+                                                             newField) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -221,27 +219,23 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
     {
       NotificationChain msgs = null ;
       if(field != null)
-        msgs =
-              ((InternalEObject) field)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) field).eInverseRemove(this,
+                                                        EOPPOSITE_FEATURE_BASE -
+                                                              DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
+                                                        null, msgs) ;
       if(newField != null)
-        msgs =
-              ((InternalEObject) newField)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newField).eInverseAdd(this,
+                                                        EOPPOSITE_FEATURE_BASE -
+                                                              DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
+                                                        null, msgs) ;
       msgs = basicSetField(newField, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD, newField,
-            newField)) ;
+                                    DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD,
+                                    newField, newField)) ;
   }
 
   /**
@@ -253,10 +247,10 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
   {
     if(indexes == null)
     {
-      indexes =
-            new EObjectResolvingEList.Unsettable<IntegerValue>(
-                  IntegerValue.class, this,
-                  DeclarativePackage.DECLARATIVE_PROPERTY_NAME__INDEXES) ;
+      indexes = new EObjectContainmentEList.Unsettable<IntegerValue>(
+                                                                     IntegerValue.class,
+                                                                     this,
+                                                                     DeclarativePackage.DECLARATIVE_PROPERTY_NAME__INDEXES) ;
     }
     return indexes ;
   }
@@ -289,8 +283,7 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -298,6 +291,8 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
         return basicSetPropertyName(null, msgs) ;
       case DeclarativePackage.DECLARATIVE_PROPERTY_NAME__FIELD :
         return basicSetField(null, msgs) ;
+      case DeclarativePackage.DECLARATIVE_PROPERTY_NAME__INDEXES :
+        return ((InternalEList<?>) getIndexes()).basicRemove(otherEnd, msgs) ;
     }
     return super.eInverseRemove(otherEnd, featureID, msgs) ;
   }
@@ -308,9 +303,7 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -331,8 +324,7 @@ public class DeclarativePropertyNameImpl extends DeclarativeBehaviorElementImpl
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {

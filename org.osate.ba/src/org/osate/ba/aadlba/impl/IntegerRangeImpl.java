@@ -36,11 +36,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.IntegerRangeImpl#getLowerIntegerValue <em>Lower Integer Value</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.IntegerRangeImpl#getUpperIntegerValue <em>Upper Integer Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

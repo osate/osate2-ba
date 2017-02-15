@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EPackage ;
 import org.eclipse.emf.ecore.util.Switch ;
 
 import org.osate.aadl2.ArrayDimension ;
+import org.osate.aadl2.ArrayableElement ;
 import org.osate.aadl2.Classifier ;
 import org.osate.aadl2.ComponentClassifier ;
 import org.osate.aadl2.Data ;
@@ -50,6 +51,7 @@ import org.osate.ba.aadlba.BehaviorNamedElement ;
 import org.osate.ba.aadlba.BehaviorState ;
 import org.osate.ba.aadlba.BehaviorTime ;
 import org.osate.ba.aadlba.BehaviorTransition ;
+import org.osate.ba.aadlba.BehaviorVariable ;
 import org.osate.ba.aadlba.ClassifierFeatureHolder ;
 import org.osate.ba.aadlba.CommunicationAction ;
 import org.osate.ba.aadlba.CompletionRelativeTimeout ;
@@ -113,7 +115,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -131,15 +133,14 @@ public class DeclarativeSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  protected T doSwitch(int classifierID,
-                       EObject theEObject)
+  protected T doSwitch(int classifierID, EObject theEObject)
   {
     switch ( classifierID )
     {
       case DeclarativePackage.ARRAYABLE_IDENTIFIER :
       {
         ArrayableIdentifier arrayableIdentifier =
-              (ArrayableIdentifier) theEObject ;
+                                                (ArrayableIdentifier) theEObject ;
         T result = caseArrayableIdentifier(arrayableIdentifier) ;
         if(result == null)
           result = caseIdentifier(arrayableIdentifier) ;
@@ -184,7 +185,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION :
       {
         DeclarativeArrayDimension declarativeArrayDimension =
-              (DeclarativeArrayDimension) theEObject ;
+                                                            (DeclarativeArrayDimension) theEObject ;
         T result = caseDeclarativeArrayDimension(declarativeArrayDimension) ;
         if(result == null)
           result = caseArrayDimension(declarativeArrayDimension) ;
@@ -201,7 +202,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT :
       {
         DeclarativeBehaviorElement declarativeBehaviorElement =
-              (DeclarativeBehaviorElement) theEObject ;
+                                                              (DeclarativeBehaviorElement) theEObject ;
         T result = caseDeclarativeBehaviorElement(declarativeBehaviorElement) ;
         if(result == null)
           result = caseBehaviorElement(declarativeBehaviorElement) ;
@@ -214,14 +215,14 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.DECLARATIVE_BEHAVIOR_TRANSITION :
       {
         DeclarativeBehaviorTransition declarativeBehaviorTransition =
-              (DeclarativeBehaviorTransition) theEObject ;
-        T result =
-              caseDeclarativeBehaviorTransition(declarativeBehaviorTransition) ;
+                                                                    (DeclarativeBehaviorTransition) theEObject ;
+        T result = caseDeclarativeBehaviorTransition(
+                                                     declarativeBehaviorTransition) ;
         if(result == null)
           result = caseBehaviorTransition(declarativeBehaviorTransition) ;
         if(result == null)
-          result =
-                caseDeclarativeBehaviorElement(declarativeBehaviorTransition) ;
+          result = caseDeclarativeBehaviorElement(
+                                                  declarativeBehaviorTransition) ;
         if(result == null)
           result = caseBehaviorNamedElement(declarativeBehaviorTransition) ;
         if(result == null)
@@ -237,7 +238,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.DECLARATIVE_PROPERTY_NAME :
       {
         DeclarativePropertyName declarativePropertyName =
-              (DeclarativePropertyName) theEObject ;
+                                                        (DeclarativePropertyName) theEObject ;
         T result = caseDeclarativePropertyName(declarativePropertyName) ;
         if(result == null)
           result = caseDeclarativeBehaviorElement(declarativePropertyName) ;
@@ -252,11 +253,12 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.DECLARATIVE_PROPERTY_REFERENCE :
       {
         DeclarativePropertyReference declarativePropertyReference =
-              (DeclarativePropertyReference) theEObject ;
-        T result =
-              caseDeclarativePropertyReference(declarativePropertyReference) ;
+                                                                  (DeclarativePropertyReference) theEObject ;
+        T result = caseDeclarativePropertyReference(
+                                                    declarativePropertyReference) ;
         if(result == null)
-          result = caseDeclarativeBehaviorElement(declarativePropertyReference) ;
+          result = caseDeclarativeBehaviorElement(
+                                                  declarativePropertyReference) ;
         if(result == null)
           result = caseIntegerValueConstant(declarativePropertyReference) ;
         if(result == null)
@@ -340,7 +342,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
       case DeclarativePackage.QUALIFIED_NAMED_ELEMENT :
       {
         QualifiedNamedElement qualifiedNamedElement =
-              (QualifiedNamedElement) theEObject ;
+                                                    (QualifiedNamedElement) theEObject ;
         T result = caseQualifiedNamedElement(qualifiedNamedElement) ;
         if(result == null)
           result = caseDataClassifier(qualifiedNamedElement) ;
@@ -353,6 +355,8 @@ public class DeclarativeSwitch<T> extends Switch<T>
         if(result == null)
           result = caseComponentClassifier(qualifiedNamedElement) ;
         if(result == null)
+          result = caseData(qualifiedNamedElement) ;
+        if(result == null)
           result = caseDataSubcomponentType(qualifiedNamedElement) ;
         if(result == null)
           result = caseValueConstant(qualifiedNamedElement) ;
@@ -360,6 +364,8 @@ public class DeclarativeSwitch<T> extends Switch<T>
           result = caseValue(qualifiedNamedElement) ;
         if(result == null)
           result = caseIntegerValue(qualifiedNamedElement) ;
+        if(result == null)
+          result = caseProcessor(qualifiedNamedElement) ;
         if(result == null)
           result = caseProcessorSubcomponentType(qualifiedNamedElement) ;
         if(result == null)
@@ -369,11 +375,7 @@ public class DeclarativeSwitch<T> extends Switch<T>
         if(result == null)
           result = caseFeatureClassifier(qualifiedNamedElement) ;
         if(result == null)
-          result = caseData(qualifiedNamedElement) ;
-        if(result == null)
           result = caseBehaviorElement(qualifiedNamedElement) ;
-        if(result == null)
-          result = caseProcessor(qualifiedNamedElement) ;
         if(result == null)
           result = caseNamespace(qualifiedNamedElement) ;
         if(result == null)
@@ -428,6 +430,48 @@ public class DeclarativeSwitch<T> extends Switch<T>
           result = caseBehaviorElement(reference) ;
         if(result == null)
           result = caseElement(reference) ;
+        if(result == null)
+          result = defaultCase(theEObject) ;
+        return result ;
+      }
+      case DeclarativePackage.DECLARATIVE_BEHAVIOR_STATE_SET :
+      {
+        DeclarativeBehaviorStateSet declarativeBehaviorStateSet =
+                                                                (DeclarativeBehaviorStateSet) theEObject ;
+        T result = caseDeclarativeBehaviorStateSet(
+                                                   declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = caseBehaviorState(declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = caseBehaviorNamedElement(declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = caseNamedElement(declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = caseBehaviorElement(declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = caseElement(declarativeBehaviorStateSet) ;
+        if(result == null)
+          result = defaultCase(theEObject) ;
+        return result ;
+      }
+      case DeclarativePackage.DECLARATIVE_BEHAVIOR_VARIABLE_SET :
+      {
+        DeclarativeBehaviorVariableSet declarativeBehaviorVariableSet =
+                                                                      (DeclarativeBehaviorVariableSet) theEObject ;
+        T result = caseDeclarativeBehaviorVariableSet(
+                                                      declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseBehaviorVariable(declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseBehaviorNamedElement(declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseArrayableElement(declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseNamedElement(declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseBehaviorElement(declarativeBehaviorVariableSet) ;
+        if(result == null)
+          result = caseElement(declarativeBehaviorVariableSet) ;
         if(result == null)
           result = defaultCase(theEObject) ;
         return result ;
@@ -512,7 +556,8 @@ public class DeclarativeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDeclarativeBehaviorTransition(DeclarativeBehaviorTransition object)
+  public T caseDeclarativeBehaviorTransition(
+                                             DeclarativeBehaviorTransition object)
   {
     return null ;
   }
@@ -625,6 +670,39 @@ public class DeclarativeSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseReference(Reference object)
+  {
+    return null ;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Behavior State Set</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Behavior State Set</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeclarativeBehaviorStateSet(DeclarativeBehaviorStateSet object)
+  {
+    return null ;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Behavior Variable Set</em>'.
+   * <!-- begin-user-doc -->
+  	 * This implementation returns null;
+  	 * returning a non-null result will terminate the switch.
+  	 * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Behavior Variable Set</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseDeclarativeBehaviorVariableSet(
+                                              DeclarativeBehaviorVariableSet object)
   {
     return null ;
   }
@@ -1334,16 +1412,48 @@ public class DeclarativeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Arrayable Element</em>'.
    * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Arrayable Element</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseArrayableElement(ArrayableElement object)
+  {
+    return null ;
+  }
+
+  /**
+  	 * Returns the result of interpreting the object as an instance of '<em>Behavior Variable</em>'.
+  	 * <!-- begin-user-doc -->
+  	 * This implementation returns null;
+  	 * returning a non-null result will terminate the switch.
+  	 * <!-- end-user-doc -->
+  	 * @param object the target of the switch.
+  	 * @return the result of interpreting the object as an instance of '<em>Behavior Variable</em>'.
+  	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+  	 * @generated
+  	 */
+  public T caseBehaviorVariable(BehaviorVariable object)
+  {
+    return null ;
+  }
+
+  /**
+  	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+  	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch, but this is the last case anyway.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-   * @generated
-   */
+  	 * @param object the target of the switch.
+  	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+  	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+  	 * @generated
+  	 */
   @Override
   public T defaultCase(EObject object)
   {

@@ -44,11 +44,26 @@ import org.osate.utils.names.DataModelProperties ;
  */
 public class AadlBaUtils {
 
+  public static final String ANNEX_NAME = "behavior_specification";
   /**
    * String separator for a component reference name.
    */
   public static final String STRING_NAME_SEPARATOR = "." ;
 
+  
+  /**
+   * Return parent BA of elt, if exists
+   * @param elt BehaviorElement to start searching for unclosing BA
+   * @return enclosing BA of elt
+   */
+  public static BehaviorAnnex getBehaviorAnnex(BehaviorElement elt)
+  {
+    if(elt instanceof BehaviorAnnex)
+      return (BehaviorAnnex) elt;
+    if(elt.eContainer()!=null)
+      return getBehaviorAnnex((BehaviorElement) elt.eContainer());
+    return null;
+  }
   /**
    * Returns the last data representation from the property stack of the given data
    * classifier or DataRepresentation.UNKNOWN if Data_Model::Data_Representation
@@ -1501,9 +1516,11 @@ public class AadlBaUtils {
         return FeatureType.REQUIRES_BUS_ACCESS;
       }
     }
+    else if (el instanceof InternalFeature)
+      return FeatureType.INTERNAL_FEATURE;
     else if (el instanceof AbstractFeature)
       return FeatureType.ABSTRACT_FEATURE;
-
+    
     // **** BEGIN IMPROVEMENT ************************************************
     
     else if (el instanceof Parameter)

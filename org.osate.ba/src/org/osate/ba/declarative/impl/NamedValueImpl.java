@@ -46,6 +46,7 @@ import org.osate.ba.declarative.Reference ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.NamedValueImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.NamedValueImpl#getBaRef <em>Ba Ref</em>}</li>
@@ -54,7 +55,6 @@ import org.osate.ba.declarative.Reference ;
  *   <li>{@link org.osate.ba.declarative.impl.NamedValueImpl#isFresh <em>Fresh</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.NamedValueImpl#isCount <em>Count</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -186,8 +186,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.NAMED_VALUE__OSATE_REF, oldOsateRef,
-                osateRef)) ;
+                                        DeclarativePackage.NAMED_VALUE__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -214,7 +214,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__OSATE_REF, oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.NAMED_VALUE__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -232,7 +233,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.NAMED_VALUE__BA_REF, oldBaRef, baRef)) ;
+                                        DeclarativePackage.NAMED_VALUE__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -259,7 +261,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.NAMED_VALUE__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -284,10 +287,11 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     reference = newReference ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.NAMED_VALUE__REFERENCE, oldReference,
-                  newReference) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.NAMED_VALUE__REFERENCE,
+                                                             oldReference,
+                                                             newReference) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -307,27 +311,23 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     {
       NotificationChain msgs = null ;
       if(reference != null)
-        msgs =
-              ((InternalEObject) reference)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.NAMED_VALUE__REFERENCE,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) reference).eInverseRemove(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.NAMED_VALUE__REFERENCE,
+                                                            null, msgs) ;
       if(newReference != null)
-        msgs =
-              ((InternalEObject) newReference)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.NAMED_VALUE__REFERENCE,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newReference).eInverseAdd(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.NAMED_VALUE__REFERENCE,
+                                                            null, msgs) ;
       msgs = basicSetReference(newReference, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__REFERENCE, newReference,
-            newReference)) ;
+                                    DeclarativePackage.NAMED_VALUE__REFERENCE,
+                                    newReference, newReference)) ;
   }
 
   /**
@@ -351,7 +351,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     dequeue = newDequeue ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__DEQUEUE, oldDequeue, dequeue)) ;
+                                    DeclarativePackage.NAMED_VALUE__DEQUEUE,
+                                    oldDequeue, dequeue)) ;
   }
 
   /**
@@ -375,7 +376,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     fresh = newFresh ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__FRESH, oldFresh, fresh)) ;
+                                    DeclarativePackage.NAMED_VALUE__FRESH,
+                                    oldFresh, fresh)) ;
   }
 
   /**
@@ -399,7 +401,8 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
     count = newCount ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.NAMED_VALUE__COUNT, oldCount, count)) ;
+                                    DeclarativePackage.NAMED_VALUE__COUNT,
+                                    oldCount, count)) ;
   }
 
   /**
@@ -409,8 +412,7 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -426,9 +428,7 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -458,8 +458,7 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -549,8 +548,7 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == Value.class)
     {
@@ -589,8 +587,7 @@ public class NamedValueImpl extends BehaviorElementImpl implements NamedValue
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == Value.class)
     {

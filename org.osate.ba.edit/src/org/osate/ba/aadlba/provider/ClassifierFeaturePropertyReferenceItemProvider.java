@@ -256,6 +256,11 @@ public class ClassifierFeaturePropertyReferenceItemProvider extends PropertyRefe
       (createChildParameter
         (AadlBaPackage.Literals.CLASSIFIER_FEATURE_PROPERTY_REFERENCE__COMPONENT,
          AadlBaFactory.eINSTANCE.createSubprogramSubcomponentHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.CLASSIFIER_FEATURE_PROPERTY_REFERENCE__COMPONENT,
+         AadlBaFactory.eINSTANCE.createInternalFeatureHolder()));
   }
 
 }

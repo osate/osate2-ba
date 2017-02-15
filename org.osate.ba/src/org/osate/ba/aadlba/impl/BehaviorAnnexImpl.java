@@ -31,6 +31,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject ;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList ;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList ;
 import org.osate.aadl2.Element ;
 import org.osate.aadl2.impl.AnnexSubclauseImpl ;
@@ -52,6 +53,7 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorAnnexImpl#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorAnnexImpl#getStates <em>States</em>}</li>
@@ -60,7 +62,6 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorAnnexImpl#getConditions <em>Conditions</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorAnnexImpl#getInitialState <em>Initial State</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,7 +98,7 @@ public class BehaviorAnnexImpl extends AnnexSubclauseImpl implements BehaviorAnn
   protected EList<BehaviorTransition> transitions;
 
   /**
-   * The cached value of the '{@link #getActions() <em>Actions</em>}' containment reference list.
+   * The cached value of the '{@link #getActions() <em>Actions</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getActions()
@@ -107,7 +108,7 @@ public class BehaviorAnnexImpl extends AnnexSubclauseImpl implements BehaviorAnn
   protected EList<BehaviorActionBlock> actions;
 
   /**
-   * The cached value of the '{@link #getConditions() <em>Conditions</em>}' containment reference list.
+   * The cached value of the '{@link #getConditions() <em>Conditions</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getConditions()
@@ -258,7 +259,7 @@ public class BehaviorAnnexImpl extends AnnexSubclauseImpl implements BehaviorAnn
   {
     if (actions == null)
     {
-      actions = new EObjectContainmentEList<BehaviorActionBlock>(BehaviorActionBlock.class, this, AadlBaPackage.BEHAVIOR_ANNEX__ACTIONS);
+      actions = new EObjectResolvingEList<BehaviorActionBlock>(BehaviorActionBlock.class, this, AadlBaPackage.BEHAVIOR_ANNEX__ACTIONS);
     }
     return actions;
   }
@@ -272,7 +273,7 @@ public class BehaviorAnnexImpl extends AnnexSubclauseImpl implements BehaviorAnn
   {
     if (conditions == null)
     {
-      conditions = new EObjectContainmentEList<BehaviorCondition>(BehaviorCondition.class, this, AadlBaPackage.BEHAVIOR_ANNEX__CONDITIONS);
+      conditions = new EObjectResolvingEList<BehaviorCondition>(BehaviorCondition.class, this, AadlBaPackage.BEHAVIOR_ANNEX__CONDITIONS);
     }
     return conditions;
   }
@@ -336,10 +337,6 @@ public class BehaviorAnnexImpl extends AnnexSubclauseImpl implements BehaviorAnn
         return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
       case AadlBaPackage.BEHAVIOR_ANNEX__TRANSITIONS:
         return ((InternalEList<?>)getTransitions()).basicRemove(otherEnd, msgs);
-      case AadlBaPackage.BEHAVIOR_ANNEX__ACTIONS:
-        return ((InternalEList<?>)getActions()).basicRemove(otherEnd, msgs);
-      case AadlBaPackage.BEHAVIOR_ANNEX__CONDITIONS:
-        return ((InternalEList<?>)getConditions()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }

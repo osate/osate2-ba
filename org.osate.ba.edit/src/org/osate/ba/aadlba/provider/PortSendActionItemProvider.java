@@ -164,6 +164,11 @@ public class PortSendActionItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createDataAccessHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
          AadlBaFactory.eINSTANCE.createDataPortHolder()));
 
     newChildDescriptors.add
@@ -175,6 +180,16 @@ public class PortSendActionItemProvider
       (createChildParameter
         (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
          AadlBaFactory.eINSTANCE.createEventPortHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createFeatureHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createParameterHolder()));
 
     newChildDescriptors.add
       (createChildParameter
@@ -195,6 +210,21 @@ public class PortSendActionItemProvider
       (createChildParameter
         (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
          AadlBaFactory.eINSTANCE.createPortFreshValue()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createPortPrototypeHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createSubprogramAccessHolder()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (AadlBaPackage.Literals.PORT_SEND_ACTION__PORT,
+         AadlBaFactory.eINSTANCE.createInternalFeatureHolder()));
 
     newChildDescriptors.add
       (createChildParameter

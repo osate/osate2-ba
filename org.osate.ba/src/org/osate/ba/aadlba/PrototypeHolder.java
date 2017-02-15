@@ -30,16 +30,16 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.PrototypeHolder#getPrototypeBinding <em>Prototype Binding</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.aadlba.AadlBaPackage#getPrototypeHolder()
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface PrototypeHolder extends IndexableElement, GroupableElement, ClassifierFeatureHolder, IBAVisitable
+public interface PrototypeHolder extends IndexableElement, GroupableElement, ClassifierFeatureHolder
 {
   /**
    * Returns the value of the '<em><b>Prototype Binding</b></em>' reference.

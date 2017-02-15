@@ -50,11 +50,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.ParameterHolderImpl#getArrayIndexes <em>Array Indexes</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.ParameterHolderImpl#getGroupHolders <em>Group Holders</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

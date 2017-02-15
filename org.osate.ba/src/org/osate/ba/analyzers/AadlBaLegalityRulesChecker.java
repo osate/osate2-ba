@@ -417,15 +417,15 @@ public class AadlBaLegalityRulesChecker
    * Keys : transition complete state dispatch condition
    */
   public boolean D_3_L6_Check(BehaviorTransition bt,
-                              Identifier transSrcStateIdentifier)
+		  BehaviorState transSrcState)
   {
-    BehaviorState tmp = (BehaviorState) transSrcStateIdentifier.getBaRef() ;
+    BehaviorState tmp = transSrcState ;
 
     // D.3.(L6) error case.
     if(bt.getCondition() instanceof DispatchCondition &&
           ! tmp.isComplete())
     {
-      this.reportLegalityError(transSrcStateIdentifier, "Only transition " +
+      this.reportLegalityError(tmp, "Only transition " +
             "out of complete states may have dispatch condition : Behavior " +
             "Annex D.3.(L6) legality rule failed") ;
 
@@ -446,15 +446,15 @@ public class AadlBaLegalityRulesChecker
    * Keys : transition complete state dispatch condition
    */
   public boolean D_3_L7_Check(BehaviorTransition bt,
-                              Identifier transSrcStateIdentifier)
+                              BehaviorState transSrcState)
   {
-    BehaviorState tmp = (BehaviorState) transSrcStateIdentifier.getBaRef() ;
+    BehaviorState tmp = transSrcState ;
 
     // D.3.(L7) error case.
     if(tmp.isComplete() && (! (bt.getCondition() 
           instanceof DispatchCondition)))
     {
-      this.reportLegalityError(transSrcStateIdentifier, "Transitions out " +
+      this.reportLegalityError(transSrcState, "Transitions out " +
             "of complete states must have dispatch condition : Behavior Annex"+
             " D.3.(L7) legality rule failed") ;
       return false ;
@@ -471,14 +471,14 @@ public class AadlBaLegalityRulesChecker
    * Object : Check legality rule D.3.(L8)
    * Keys : transition out final state
    */
-  public boolean D_3_L8_Check(Identifier transSrcStateIdentifier)
+  public boolean D_3_L8_Check(BehaviorState transSrcState)
   {
-    BehaviorState tmp = (BehaviorState) transSrcStateIdentifier.getBaRef() ;
+    BehaviorState tmp = (BehaviorState) transSrcState ;
 
     // D.3.(L8) error case.
     if(tmp.isFinal() && ! (tmp.isComplete() || tmp.isInitial()))
     {
-      this.reportLegalityError(transSrcStateIdentifier, "Transitions out " +
+      this.reportLegalityError(transSrcState, "Transitions out " +
             "of final states are not allowed : Behavior Annex" +
             " D.3.(L8) legality rule failed") ;
       return false ;
@@ -499,11 +499,11 @@ public class AadlBaLegalityRulesChecker
   public boolean D_4_L1_Check(DispatchRelativeTimeout tc,
                               DeclarativeBehaviorTransition bt)
   {
-    List<Identifier> sourceState = bt.getSrcStates()  ; 
+    List<BehaviorState> sourceStateList = bt.getSrcStates()  ; 
 
-    if(sourceState.size() == 1)
+    if(sourceStateList.size() == 1)
     {
-      BehaviorState bs = (BehaviorState) (sourceState.get(0)).getBaRef() ;
+      BehaviorState bs = sourceStateList.get(0) ;
       if(false==_alreadyFoundDispatchRelativeTimeoutTransition.containsKey(bs)
             &&
             bs.isComplete())
@@ -598,13 +598,13 @@ public class AadlBaLegalityRulesChecker
   public Boolean D_4_L2_Check(CompletionRelativeTimeout crtcac
                               , DeclarativeBehaviorTransition bt)
   {
-    List<Identifier> sourceState = bt.getSrcStates() ;
+    List<BehaviorState> sourceStateList = bt.getSrcStates() ;
 
     if(! _alreadyFoundCompletionRelativeTimeoutConditionCatchTransition
-          .containsKey(sourceState) &&
-          sourceState.size() == 1)
+          .containsKey(sourceStateList) &&
+          sourceStateList.size() == 1)
     {
-      BehaviorState bs = (BehaviorState) (sourceState.get(0)).getBaRef() ;
+      BehaviorState bs = sourceStateList.get(0) ;
       // Positive case.
       if(bs.isComplete())
       {

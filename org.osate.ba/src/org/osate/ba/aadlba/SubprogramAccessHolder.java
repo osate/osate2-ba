@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface SubprogramAccessHolder extends DispatchTriggerCondition, CalledSubprogramHolder, FeatureHolder, IBAVisitable
+public interface SubprogramAccessHolder extends DispatchTriggerCondition, CalledSubprogramHolder, FeatureHolder
 {
   /**
    * <!-- begin-user-doc -->

@@ -29,6 +29,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.BehaviorTransition#getSourceState <em>Source State</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.BehaviorTransition#getCondition <em>Condition</em>}</li>
@@ -36,13 +37,12 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *   <li>{@link org.osate.ba.aadlba.BehaviorTransition#getActionBlock <em>Action Block</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.BehaviorTransition#getPriority <em>Priority</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.aadlba.AadlBaPackage#getBehaviorTransition()
  * @model
  * @generated
  */
-public interface BehaviorTransition extends BehaviorNamedElement, IBAVisitable
+public interface BehaviorTransition extends BehaviorNamedElement
 {
   /**
    * Returns the value of the '<em><b>Source State</b></em>' reference.
@@ -127,26 +127,26 @@ public interface BehaviorTransition extends BehaviorNamedElement, IBAVisitable
   void setDestinationState(BehaviorState value);
 
   /**
-   * Returns the value of the '<em><b>Action Block</b></em>' reference.
+   * Returns the value of the '<em><b>Action Block</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Action Block</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Action Block</em>' reference.
+   * @return the value of the '<em>Action Block</em>' containment reference.
    * @see #setActionBlock(BehaviorActionBlock)
    * @see org.osate.ba.aadlba.AadlBaPackage#getBehaviorTransition_ActionBlock()
-   * @model
+   * @model containment="true"
    * @generated
    */
   BehaviorActionBlock getActionBlock();
 
   /**
-   * Sets the value of the '{@link org.osate.ba.aadlba.BehaviorTransition#getActionBlock <em>Action Block</em>}' reference.
+   * Sets the value of the '{@link org.osate.ba.aadlba.BehaviorTransition#getActionBlock <em>Action Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Action Block</em>' reference.
+   * @param value the new value of the '<em>Action Block</em>' containment reference.
    * @see #getActionBlock()
    * @generated
    */

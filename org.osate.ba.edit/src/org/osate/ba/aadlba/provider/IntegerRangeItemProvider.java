@@ -195,12 +195,12 @@ public class IntegerRangeItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INTEGER_RANGE__LOWER_INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INTEGER_RANGE__LOWER_INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
@@ -320,12 +320,12 @@ public class IntegerRangeItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INTEGER_RANGE__UPPER_INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INTEGER_RANGE__UPPER_INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter

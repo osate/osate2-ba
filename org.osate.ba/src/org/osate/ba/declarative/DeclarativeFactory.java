@@ -40,7 +40,7 @@ public interface DeclarativeFactory extends EFactory
    * @generated
    */
   DeclarativeFactory eINSTANCE =
-        org.osate.ba.declarative.impl.DeclarativeFactoryImpl.init() ;
+                               org.osate.ba.declarative.impl.DeclarativeFactoryImpl.init() ;
 
   /**
    * Returns a new object of class '<em>Arrayable Identifier</em>'.
@@ -140,6 +140,24 @@ public interface DeclarativeFactory extends EFactory
    * @generated
    */
   Reference createReference() ;
+
+  /**
+   * Returns a new object of class '<em>Behavior State Set</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Behavior State Set</em>'.
+   * @generated
+   */
+  DeclarativeBehaviorStateSet createDeclarativeBehaviorStateSet() ;
+
+  /**
+   * Returns a new object of class '<em>Behavior Variable Set</em>'.
+   * <!-- begin-user-doc -->
+  	 * <!-- end-user-doc -->
+   * @return a new object of class '<em>Behavior Variable Set</em>'.
+   * @generated
+   */
+  DeclarativeBehaviorVariableSet createDeclarativeBehaviorVariableSet() ;
 
   /**
    * Returns the package supported by this factory.

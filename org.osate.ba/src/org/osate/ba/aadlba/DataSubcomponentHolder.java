@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface DataSubcomponentHolder extends DataHolder, Target, ElementValues, SubprogramHolderProxy, SubcomponentHolder, IBAVisitable
+public interface DataSubcomponentHolder extends DataHolder, Target, ElementValues, SubprogramHolderProxy, SubcomponentHolder
 {
   /**
    * <!-- begin-user-doc -->

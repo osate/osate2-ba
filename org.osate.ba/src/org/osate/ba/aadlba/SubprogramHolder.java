@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface SubprogramHolder extends CalledSubprogramHolder, IBAVisitable
+public interface SubprogramHolder extends CalledSubprogramHolder
 {
   /**
    * <!-- begin-user-doc -->

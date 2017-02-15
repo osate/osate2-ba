@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface StructUnionElementHolder extends DataHolder, IndexableElement, Target, ElementValues, IBAVisitable
+public interface StructUnionElementHolder extends DataHolder, IndexableElement, Target, ElementValues
 {
   /**
    * <!-- begin-user-doc -->

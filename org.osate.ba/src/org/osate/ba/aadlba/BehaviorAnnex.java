@@ -36,6 +36,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.BehaviorAnnex#getVariables <em>Variables</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.BehaviorAnnex#getStates <em>States</em>}</li>
@@ -44,13 +45,12 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *   <li>{@link org.osate.ba.aadlba.BehaviorAnnex#getConditions <em>Conditions</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.BehaviorAnnex#getInitialState <em>Initial State</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.aadlba.AadlBaPackage#getBehaviorAnnex()
  * @model
  * @generated
  */
-public interface BehaviorAnnex extends AnnexSubclause, BehaviorElement, IBAVisitable
+public interface BehaviorAnnex extends AnnexSubclause, BehaviorElement
 {
   /**
    * Returns the value of the '<em><b>Variables</b></em>' containment reference list.
@@ -170,7 +170,7 @@ public interface BehaviorAnnex extends AnnexSubclause, BehaviorElement, IBAVisit
   boolean isSetTransitions();
 
   /**
-   * Returns the value of the '<em><b>Actions</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Actions</b></em>' reference list.
    * The list contents are of type {@link org.osate.ba.aadlba.BehaviorActionBlock}.
    * <!-- begin-user-doc -->
    * <p>
@@ -178,15 +178,15 @@ public interface BehaviorAnnex extends AnnexSubclause, BehaviorElement, IBAVisit
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Actions</em>' containment reference list.
+   * @return the value of the '<em>Actions</em>' reference list.
    * @see org.osate.ba.aadlba.AadlBaPackage#getBehaviorAnnex_Actions()
-   * @model containment="true"
+   * @model
    * @generated
    */
   EList<BehaviorActionBlock> getActions();
 
   /**
-   * Returns the value of the '<em><b>Conditions</b></em>' containment reference list.
+   * Returns the value of the '<em><b>Conditions</b></em>' reference list.
    * The list contents are of type {@link org.osate.ba.aadlba.BehaviorCondition}.
    * <!-- begin-user-doc -->
    * <p>
@@ -194,9 +194,9 @@ public interface BehaviorAnnex extends AnnexSubclause, BehaviorElement, IBAVisit
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Conditions</em>' containment reference list.
+   * @return the value of the '<em>Conditions</em>' reference list.
    * @see org.osate.ba.aadlba.AadlBaPackage#getBehaviorAnnex_Conditions()
-   * @model containment="true"
+   * @model
    * @generated
    */
   EList<BehaviorCondition> getConditions();

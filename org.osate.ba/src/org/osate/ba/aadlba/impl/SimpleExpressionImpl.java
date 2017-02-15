@@ -44,12 +44,12 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.SimpleExpressionImpl#getUnaryAddingOperator <em>Unary Adding Operator</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SimpleExpressionImpl#getTerms <em>Terms</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SimpleExpressionImpl#getBinaryAddingOperators <em>Binary Adding Operators</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -42,12 +42,12 @@ import org.osate.ba.declarative.Identifier ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.IdentifierImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.IdentifierImpl#getBaRef <em>Ba Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.IdentifierImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -129,7 +129,8 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.IDENTIFIER__OSATE_REF, oldOsateRef, osateRef)) ;
+                                        DeclarativePackage.IDENTIFIER__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -156,7 +157,8 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.IDENTIFIER__OSATE_REF, oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.IDENTIFIER__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -174,7 +176,8 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.IDENTIFIER__BA_REF, oldBaRef, baRef)) ;
+                                        DeclarativePackage.IDENTIFIER__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -201,7 +204,8 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.IDENTIFIER__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.IDENTIFIER__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -225,7 +229,8 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
     id = newId ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.IDENTIFIER__ID, oldId, id)) ;
+                                    DeclarativePackage.IDENTIFIER__ID, oldId,
+                                    id)) ;
   }
 
   /**
@@ -234,9 +239,7 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -260,8 +263,7 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -327,8 +329,7 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {
@@ -351,8 +352,7 @@ public class IdentifierImpl extends BehaviorStateImpl implements Identifier
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {

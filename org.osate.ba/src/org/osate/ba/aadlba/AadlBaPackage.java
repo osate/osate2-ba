@@ -1787,7 +1787,7 @@ public interface AadlBaPackage extends EPackage
   int BEHAVIOR_ANNEX__TRANSITIONS = Aadl2Package.ANNEX_SUBCLAUSE_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Actions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Actions</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -1796,7 +1796,7 @@ public interface AadlBaPackage extends EPackage
   int BEHAVIOR_ANNEX__ACTIONS = Aadl2Package.ANNEX_SUBCLAUSE_FEATURE_COUNT + 3;
 
   /**
-   * The feature id for the '<em><b>Conditions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Conditions</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2372,7 +2372,7 @@ public interface AadlBaPackage extends EPackage
   int BEHAVIOR_TRANSITION__DESTINATION_STATE = BEHAVIOR_NAMED_ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The feature id for the '<em><b>Action Block</b></em>' reference.
+   * The feature id for the '<em><b>Action Block</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6358,6 +6358,70 @@ public interface AadlBaPackage extends EPackage
   int WHILE_OR_DO_UNTIL_STATEMENT_FEATURE_COUNT = LOOP_STATEMENT_FEATURE_COUNT + 2;
 
   /**
+   * The meta object id for the '{@link org.osate.ba.aadlba.impl.InternalFeatureHolderImpl <em>Internal Feature Holder</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.osate.ba.aadlba.impl.InternalFeatureHolderImpl
+   * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getInternalFeatureHolder()
+   * @generated
+   */
+  int INTERNAL_FEATURE_HOLDER = 115;
+
+  /**
+   * The feature id for the '<em><b>Owned Element</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER__OWNED_ELEMENT = FEATURE_HOLDER__OWNED_ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Owned Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER__OWNED_COMMENT = FEATURE_HOLDER__OWNED_COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Element</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER__ELEMENT = FEATURE_HOLDER__ELEMENT;
+
+  /**
+   * The feature id for the '<em><b>Array Indexes</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER__ARRAY_INDEXES = FEATURE_HOLDER__ARRAY_INDEXES;
+
+  /**
+   * The feature id for the '<em><b>Group Holders</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER__GROUP_HOLDERS = FEATURE_HOLDER__GROUP_HOLDERS;
+
+  /**
+   * The number of structural features of the '<em>Internal Feature Holder</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INTERNAL_FEATURE_HOLDER_FEATURE_COUNT = FEATURE_HOLDER_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.osate.ba.aadlba.BehaviorFeatureType <em>Behavior Feature Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -6365,7 +6429,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getBehaviorFeatureType()
    * @generated
    */
-  int BEHAVIOR_FEATURE_TYPE = 115;
+  int BEHAVIOR_FEATURE_TYPE = 116;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.BinaryAddingOperator <em>Binary Adding Operator</em>}' enum.
@@ -6375,7 +6439,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getBinaryAddingOperator()
    * @generated
    */
-  int BINARY_ADDING_OPERATOR = 116;
+  int BINARY_ADDING_OPERATOR = 117;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.BinaryNumericOperator <em>Binary Numeric Operator</em>}' enum.
@@ -6385,7 +6449,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getBinaryNumericOperator()
    * @generated
    */
-  int BINARY_NUMERIC_OPERATOR = 117;
+  int BINARY_NUMERIC_OPERATOR = 118;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.DataRepresentation <em>Data Representation</em>}' enum.
@@ -6395,7 +6459,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getDataRepresentation()
    * @generated
    */
-  int DATA_REPRESENTATION = 118;
+  int DATA_REPRESENTATION = 119;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.FeatureType <em>Feature Type</em>}' enum.
@@ -6405,7 +6469,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getFeatureType()
    * @generated
    */
-  int FEATURE_TYPE = 119;
+  int FEATURE_TYPE = 120;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.LogicalOperator <em>Logical Operator</em>}' enum.
@@ -6415,7 +6479,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getLogicalOperator()
    * @generated
    */
-  int LOGICAL_OPERATOR = 120;
+  int LOGICAL_OPERATOR = 121;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.MultiplyingOperator <em>Multiplying Operator</em>}' enum.
@@ -6425,7 +6489,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getMultiplyingOperator()
    * @generated
    */
-  int MULTIPLYING_OPERATOR = 121;
+  int MULTIPLYING_OPERATOR = 122;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.RelationalOperator <em>Relational Operator</em>}' enum.
@@ -6435,7 +6499,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getRelationalOperator()
    * @generated
    */
-  int RELATIONAL_OPERATOR = 122;
+  int RELATIONAL_OPERATOR = 123;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.UnaryAddingOperator <em>Unary Adding Operator</em>}' enum.
@@ -6445,7 +6509,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getUnaryAddingOperator()
    * @generated
    */
-  int UNARY_ADDING_OPERATOR = 123;
+  int UNARY_ADDING_OPERATOR = 124;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.UnaryBooleanOperator <em>Unary Boolean Operator</em>}' enum.
@@ -6455,7 +6519,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getUnaryBooleanOperator()
    * @generated
    */
-  int UNARY_BOOLEAN_OPERATOR = 124;
+  int UNARY_BOOLEAN_OPERATOR = 125;
 
   /**
    * The meta object id for the '{@link org.osate.ba.aadlba.UnaryNumericOperator <em>Unary Numeric Operator</em>}' enum.
@@ -6465,7 +6529,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getUnaryNumericOperator()
    * @generated
    */
-  int UNARY_NUMERIC_OPERATOR = 125;
+  int UNARY_NUMERIC_OPERATOR = 126;
 
   /**
    * The meta object id for the '<em>Boolean</em>' data type.
@@ -6474,7 +6538,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getBoolean()
    * @generated
    */
-  int BOOLEAN = 126;
+  int BOOLEAN = 127;
 
   /**
    * The meta object id for the '<em>Integer</em>' data type.
@@ -6483,7 +6547,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getInteger()
    * @generated
    */
-  int INTEGER = 127;
+  int INTEGER = 128;
 
   /**
    * The meta object id for the '<em>Real</em>' data type.
@@ -6492,7 +6556,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getReal()
    * @generated
    */
-  int REAL = 128;
+  int REAL = 129;
 
   /**
    * The meta object id for the '<em>String</em>' data type.
@@ -6502,7 +6566,7 @@ public interface AadlBaPackage extends EPackage
    * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getString()
    * @generated
    */
-  int STRING = 129;
+  int STRING = 130;
 
 
   /**
@@ -6714,10 +6778,10 @@ public interface AadlBaPackage extends EPackage
   EReference getBehaviorAnnex_Transitions();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.osate.ba.aadlba.BehaviorAnnex#getActions <em>Actions</em>}'.
+   * Returns the meta object for the reference list '{@link org.osate.ba.aadlba.BehaviorAnnex#getActions <em>Actions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Actions</em>'.
+   * @return the meta object for the reference list '<em>Actions</em>'.
    * @see org.osate.ba.aadlba.BehaviorAnnex#getActions()
    * @see #getBehaviorAnnex()
    * @generated
@@ -6725,10 +6789,10 @@ public interface AadlBaPackage extends EPackage
   EReference getBehaviorAnnex_Actions();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.osate.ba.aadlba.BehaviorAnnex#getConditions <em>Conditions</em>}'.
+   * Returns the meta object for the reference list '{@link org.osate.ba.aadlba.BehaviorAnnex#getConditions <em>Conditions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Conditions</em>'.
+   * @return the meta object for the reference list '<em>Conditions</em>'.
    * @see org.osate.ba.aadlba.BehaviorAnnex#getConditions()
    * @see #getBehaviorAnnex()
    * @generated
@@ -7000,10 +7064,10 @@ public interface AadlBaPackage extends EPackage
   EReference getBehaviorTransition_DestinationState();
 
   /**
-   * Returns the meta object for the reference '{@link org.osate.ba.aadlba.BehaviorTransition#getActionBlock <em>Action Block</em>}'.
+   * Returns the meta object for the containment reference '{@link org.osate.ba.aadlba.BehaviorTransition#getActionBlock <em>Action Block</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Action Block</em>'.
+   * @return the meta object for the containment reference '<em>Action Block</em>'.
    * @see org.osate.ba.aadlba.BehaviorTransition#getActionBlock()
    * @see #getBehaviorTransition()
    * @generated
@@ -8456,6 +8520,16 @@ public interface AadlBaPackage extends EPackage
   EAttribute getWhileOrDoUntilStatement_DoUntil();
 
   /**
+   * Returns the meta object for class '{@link org.osate.ba.aadlba.InternalFeatureHolder <em>Internal Feature Holder</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Internal Feature Holder</em>'.
+   * @see org.osate.ba.aadlba.InternalFeatureHolder
+   * @generated
+   */
+  EClass getInternalFeatureHolder();
+
+  /**
    * Returns the meta object for class '{@link org.osate.ba.aadlba.PropertySetPropertyReference <em>Property Set Property Reference</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8931,7 +9005,7 @@ public interface AadlBaPackage extends EPackage
     EReference BEHAVIOR_ANNEX__TRANSITIONS = eINSTANCE.getBehaviorAnnex_Transitions();
 
     /**
-     * The meta object literal for the '<em><b>Actions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Actions</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -8939,7 +9013,7 @@ public interface AadlBaPackage extends EPackage
     EReference BEHAVIOR_ANNEX__ACTIONS = eINSTANCE.getBehaviorAnnex_Actions();
 
     /**
-     * The meta object literal for the '<em><b>Conditions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Conditions</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -9169,7 +9243,7 @@ public interface AadlBaPackage extends EPackage
     EReference BEHAVIOR_TRANSITION__DESTINATION_STATE = eINSTANCE.getBehaviorTransition_DestinationState();
 
     /**
-     * The meta object literal for the '<em><b>Action Block</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Action Block</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -10455,6 +10529,16 @@ public interface AadlBaPackage extends EPackage
      * @generated
      */
     EAttribute WHILE_OR_DO_UNTIL_STATEMENT__DO_UNTIL = eINSTANCE.getWhileOrDoUntilStatement_DoUntil();
+
+    /**
+     * The meta object literal for the '{@link org.osate.ba.aadlba.impl.InternalFeatureHolderImpl <em>Internal Feature Holder</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.osate.ba.aadlba.impl.InternalFeatureHolderImpl
+     * @see org.osate.ba.aadlba.impl.AadlBaPackageImpl#getInternalFeatureHolder()
+     * @generated
+     */
+    EClass INTERNAL_FEATURE_HOLDER = eINSTANCE.getInternalFeatureHolder();
 
     /**
      * The meta object literal for the '{@link org.osate.ba.aadlba.impl.PropertySetPropertyReferenceImpl <em>Property Set Property Reference</em>}' class.

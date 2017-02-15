@@ -36,11 +36,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.WhileOrDoUntilStatementImpl#getLogicalValueExpression <em>Logical Value Expression</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.WhileOrDoUntilStatementImpl#isDoUntil <em>Do Until</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

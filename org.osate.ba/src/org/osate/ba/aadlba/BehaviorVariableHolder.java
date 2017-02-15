@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface BehaviorVariableHolder extends DataHolder, IndexableElement, Target, ElementValues, SubprogramHolderProxy, ClassifierFeatureHolder, IBAVisitable
+public interface BehaviorVariableHolder extends DataHolder, IndexableElement, Target, ElementValues, SubprogramHolderProxy, ClassifierFeatureHolder
 {
   /**
    * <!-- begin-user-doc -->

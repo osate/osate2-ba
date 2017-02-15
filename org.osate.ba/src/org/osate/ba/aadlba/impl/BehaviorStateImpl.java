@@ -44,6 +44,7 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorStateImpl#isInitial <em>Initial</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorStateImpl#isComplete <em>Complete</em>}</li>
@@ -52,7 +53,6 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorStateImpl#getIncomingTransitions <em>Incoming Transitions</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorStateImpl#getOutgoingTransitions <em>Outgoing Transitions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

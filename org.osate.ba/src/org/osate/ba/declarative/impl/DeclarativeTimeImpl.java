@@ -47,17 +47,17 @@ import org.osate.ba.declarative.Identifier ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeTimeImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeTimeImpl#getBaRef <em>Ba Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeTimeImpl#getUnitId <em>Unit Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
-                                                         DeclarativeTime
+                                 DeclarativeTime
 {
   /**
    * The cached value of the '{@link #getOsateRef() <em>Osate Ref</em>}' reference.
@@ -125,8 +125,8 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_TIME__OSATE_REF, oldOsateRef,
-                osateRef)) ;
+                                        DeclarativePackage.DECLARATIVE_TIME__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -153,8 +153,8 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_TIME__OSATE_REF, oldOsateRef,
-            osateRef)) ;
+                                    DeclarativePackage.DECLARATIVE_TIME__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -172,7 +172,8 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_TIME__BA_REF, oldBaRef, baRef)) ;
+                                        DeclarativePackage.DECLARATIVE_TIME__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -199,7 +200,8 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_TIME__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.DECLARATIVE_TIME__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -224,10 +226,11 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
     unitId = newUnitId ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.DECLARATIVE_TIME__UNIT_ID, oldUnitId,
-                  newUnitId) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
+                                                             oldUnitId,
+                                                             newUnitId) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -247,26 +250,23 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
     {
       NotificationChain msgs = null ;
       if(unitId != null)
-        msgs =
-              ((InternalEObject) unitId)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) unitId).eInverseRemove(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
+                                                         null, msgs) ;
       if(newUnitId != null)
-        msgs =
-              ((InternalEObject) newUnitId)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newUnitId).eInverseAdd(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
+                                                         null, msgs) ;
       msgs = basicSetUnitId(newUnitId, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_TIME__UNIT_ID, newUnitId, newUnitId)) ;
+                                    DeclarativePackage.DECLARATIVE_TIME__UNIT_ID,
+                                    newUnitId, newUnitId)) ;
   }
 
   /**
@@ -276,8 +276,7 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -293,9 +292,7 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -319,8 +316,7 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -386,8 +382,7 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == DispatchTriggerCondition.class)
     {
@@ -434,8 +429,7 @@ public class DeclarativeTimeImpl extends BehaviorTimeImpl implements
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == DispatchTriggerCondition.class)
     {

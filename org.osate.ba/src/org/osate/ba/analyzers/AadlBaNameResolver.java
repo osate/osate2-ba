@@ -33,12 +33,14 @@ import org.osate.aadl2.Classifier ;
 import org.osate.aadl2.ClassifierFeature ;
 import org.osate.aadl2.ClassifierValue ;
 import org.osate.aadl2.ComponentClassifier ;
+import org.osate.aadl2.ComponentImplementation ;
 import org.osate.aadl2.Data ;
 import org.osate.aadl2.DataClassifier ;
 import org.osate.aadl2.Element ;
 import org.osate.aadl2.EnumerationLiteral ;
 import org.osate.aadl2.EnumerationType ;
 import org.osate.aadl2.Feature ;
+import org.osate.aadl2.InternalFeature ;
 import org.osate.aadl2.ListType ;
 import org.osate.aadl2.ListValue ;
 import org.osate.aadl2.ModalPropertyValue ;
@@ -157,10 +159,10 @@ public class AadlBaNameResolver
 
    private boolean assignmentActionResolver(AssignmentAction act)
    {
-      boolean result = false ;
-      Target t = act.getTarget() ;
+      boolean result = true ;
       
-      result = targetResolver(t) ;
+      if(act.getTarget() != null)
+        result &= targetResolver(act.getTarget());
       
       if(! (act.getValueExpression() instanceof Any))
       {
@@ -295,49 +297,11 @@ public class AadlBaNameResolver
          {
             return communicationActionResolver((CommAction) act) ;
          }
-         else // Case of timed action.
-         {
-            return timedActionResolver((TimedAction) act) ;
-         }
-      }
-   }
-
-   private boolean transDestStateResolver(DeclarativeBehaviorTransition trans)
-   {
-      BehaviorState state = null ;
-      Identifier id = trans.getDestState() ;
-      state = AadlBaVisitors.findBehaviorState(_ba, id.getId()) ;
-      if(state != null)
-      {
-         id.setBaRef(state);
-         return true ;
-      }
-      else
-      {
-         reportNameError(id, id.getId()) ;
-         return false ;
+         return true;
       }
    }
    
-   private boolean transSrcStateResolver(DeclarativeBehaviorTransition trans)
-   {
-      boolean result = true ;
-      BehaviorState state = null ;
-      for(Identifier id : trans.getSrcStates())
-      {
-         state = AadlBaVisitors.findBehaviorState(_ba, id.getId()) ;
-         if(state != null)
-         {
-            id.setBaRef(state) ;
-         }
-         else
-         {
-            reportNameError(id, id.getId()) ;
-            result = false ;
-         }
-      }
-      return result ;
-   }
+  
    
    /**
     * Document: AADL Behavior Annex draft 
@@ -356,14 +320,8 @@ public class AadlBaNameResolver
         boolean result = true ;
         
         for(BehaviorTransition tmp : _ba.getTransitions())
-        {
-           DeclarativeBehaviorTransition trans = (DeclarativeBehaviorTransition)
-                                                                           tmp ;
-          
-           result &= transDestStateResolver(trans) ;
-           result &= transSrcStateResolver(trans) ;
-           
-           BehaviorCondition cond = trans.getCondition() ;
+        {   
+           BehaviorCondition cond = tmp.getCondition() ;
            
            // According to D.3.(N2) Naming rule : behavior condition can be null
            // as no condition means always true.
@@ -383,7 +341,7 @@ public class AadlBaNameResolver
               }
            }
            
-           BehaviorActionBlock block = trans.getActionBlock() ;
+           BehaviorActionBlock block = tmp.getActionBlock() ;
            
            // Behavior actions of an behavior transition may not exist.            
            if(block != null)
@@ -399,10 +357,10 @@ public class AadlBaNameResolver
       boolean result = behaviorActionsResolver(block.getContent());
       
       // Check timeout option.
-      if(block.getTimeout() != null)
-      {
-         result &= behaviorTimeResolver((DeclarativeTime) block.getTimeout()) ;
-      }
+//      if(block.getTimeout() != null)
+//      {
+//         result &= behaviorTimeResolver((DeclarativeTime) block.getTimeout()) ;
+//      }
       
       return result ;
    }
@@ -493,13 +451,6 @@ public class AadlBaNameResolver
                   ForOrForAllStatement stat = (ForOrForAllStatement) act ;
                   
                   IterativeVariable itVar = stat.getIterativeVariable() ;
-                  
-                  
-                  // Resolves unique component classifier reference.
-                  QualifiedNamedElement uccr = (QualifiedNamedElement) 
-                                                     itVar.getDataClassifier() ;
-                  
-                  result = qualifiedNamedElementResolver(uccr, true) ;
                   
                   // Checks the for/forall's iterative variable.
                   result &= iterativeVariableUniquenessCheck(itVar); 
@@ -631,6 +582,9 @@ public class AadlBaNameResolver
    private boolean behaviorActionsResolver(BehaviorActions acts)
    {
       boolean result = true ;
+      
+      if(acts==null)
+        return false;
       
       // Case of single behavior action.
       if(acts instanceof BehaviorAction)
@@ -825,8 +779,11 @@ public class AadlBaNameResolver
       {
         for(Element e : dc.getDispatchTriggers())
         {
-          Reference trigg = (Reference) e ;
-          result &= refResolver(trigg);
+          if(e instanceof Reference)
+          {
+            Reference trigg = (Reference) e ;
+            result &= refResolver(trigg);
+          }
         }
       }
       
@@ -846,6 +803,8 @@ public class AadlBaNameResolver
       }
    }
 
+   
+   
    private boolean featureResolver(Classifier parentContainer,
                                      Identifier id, boolean hasToReport)
    {
@@ -853,6 +812,19 @@ public class AadlBaNameResolver
       
       Feature f = Aadl2Visitors.findFeatureInComponent(parentContainer,
                                                        nameToFind) ;
+      
+      //Add support for internal features
+      if(f==null && parentContainer instanceof ComponentImplementation)
+      {
+        ComponentImplementation ci = (ComponentImplementation) parentContainer;
+        InternalFeature internalFeature = Aadl2Visitors.findFeatureInComponent(ci, nameToFind);
+        if (internalFeature != null)
+        {
+           id.setOsateRef(internalFeature);
+           return true ;
+        }
+      }
+      
       if (f != null)
       {
          id.setOsateRef(f);
@@ -1231,7 +1203,7 @@ public class AadlBaNameResolver
      String neName = ne.getName() ;
      
      _errManager.error(be, "duplicate name error: " + neName + " at line " +
-           be.getLocationReference().getLine() + " conflict with the element" +
+         Aadl2Utils.getLocationReference(be).getLine() + " conflict with the element" +
              " with the same name located at line " + 
                 Aadl2Utils.getLocationReference(ne).getLine()) ;
    }
@@ -1361,28 +1333,13 @@ public class AadlBaNameResolver
 
    private boolean targetResolver(Target tar)
    {
-      return refResolver((Reference) tar) ;
+     if(tar instanceof Reference)
+       return refResolver((Reference) tar) ;
+     else
+       return true;
    }
    
-   private boolean timedActionResolver(TimedAction act)
-   {
-      boolean result = behaviorTimeResolver((DeclarativeTime) act.getLowerTime()) ;
-
-      if(act.getUpperTime() != null)
-      {
-         result &= behaviorTimeResolver((DeclarativeTime) act.getUpperTime());
-      }
-      
-      if(act.isSetProcessorClassifier())
-      {
-        for(ProcessorClassifier pc : act.getProcessorClassifier())
-        {
-          result &= qualifiedNamedElementResolver((QualifiedNamedElement) pc, true) ;
-        }
-      }
-      
-      return result ;
-   }
+   
    
    // Checks behavior time's time unit according to property set Time_Units and 
    // binds if checking is successful.
@@ -2397,10 +2354,6 @@ public class AadlBaNameResolver
       // classifier reference exists.
       for(BehaviorVariable v : _ba.getVariables())
       {
-         
-        uccr = (QualifiedNamedElement) v.getDataClassifier() ;
-
-        result &= qualifiedNamedElementResolver(uccr, true) ;
          
         for(ArrayDimension tmp : v.getArrayDimensions())
         {

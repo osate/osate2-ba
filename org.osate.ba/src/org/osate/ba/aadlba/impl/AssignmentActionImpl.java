@@ -37,11 +37,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.AssignmentActionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.AssignmentActionImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

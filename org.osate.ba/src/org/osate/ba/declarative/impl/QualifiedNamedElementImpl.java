@@ -57,18 +57,18 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.QualifiedNamedElementImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.QualifiedNamedElementImpl#getBaRef <em>Ba Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.QualifiedNamedElementImpl#getBaNamespace <em>Ba Namespace</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.QualifiedNamedElementImpl#getBaName <em>Ba Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class QualifiedNamedElementImpl extends DataClassifierImpl implements
-                                                                 QualifiedNamedElement
+                                       QualifiedNamedElement
 {
   /**
    * The cached value of the '{@link #getOsateRef() <em>Osate Ref</em>}' reference.
@@ -146,8 +146,8 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.QUALIFIED_NAMED_ELEMENT__OSATE_REF,
-                oldOsateRef, osateRef)) ;
+                                        DeclarativePackage.QUALIFIED_NAMED_ELEMENT__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -174,8 +174,8 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.QUALIFIED_NAMED_ELEMENT__OSATE_REF, oldOsateRef,
-            osateRef)) ;
+                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -193,8 +193,8 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_REF, oldBaRef,
-                baRef)) ;
+                                        DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -221,7 +221,8 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -246,10 +247,11 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     baNamespace = newBaNamespace ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
-                  oldBaNamespace, newBaNamespace) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
+                                                             oldBaNamespace,
+                                                             newBaNamespace) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -269,27 +271,23 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     {
       NotificationChain msgs = null ;
       if(baNamespace != null)
-        msgs =
-              ((InternalEObject) baNamespace)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) baNamespace).eInverseRemove(this,
+                                                              EOPPOSITE_FEATURE_BASE -
+                                                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
+                                                              null, msgs) ;
       if(newBaNamespace != null)
-        msgs =
-              ((InternalEObject) newBaNamespace)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newBaNamespace).eInverseAdd(this,
+                                                              EOPPOSITE_FEATURE_BASE -
+                                                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
+                                                              null, msgs) ;
       msgs = basicSetBaNamespace(newBaNamespace, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
-            newBaNamespace, newBaNamespace)) ;
+                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAMESPACE,
+                                    newBaNamespace, newBaNamespace)) ;
   }
 
   /**
@@ -314,10 +312,11 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     baName = newBaName ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
-                  oldBaName, newBaName) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
+                                                             oldBaName,
+                                                             newBaName) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -337,27 +336,23 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     {
       NotificationChain msgs = null ;
       if(baName != null)
-        msgs =
-              ((InternalEObject) baName)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) baName).eInverseRemove(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
+                                                         null, msgs) ;
       if(newBaName != null)
-        msgs =
-              ((InternalEObject) newBaName)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newBaName).eInverseAdd(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
+                                                         null, msgs) ;
       msgs = basicSetBaName(newBaName, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME, newBaName,
-            newBaName)) ;
+                                    DeclarativePackage.QUALIFIED_NAMED_ELEMENT__BA_NAME,
+                                    newBaName, newBaName)) ;
   }
 
   /**
@@ -367,8 +362,7 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -386,9 +380,7 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -414,8 +406,7 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -489,8 +480,7 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == BehaviorElement.class)
     {
@@ -577,8 +567,7 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == BehaviorElement.class)
     {
@@ -714,9 +703,9 @@ public class QualifiedNamedElementImpl extends DataClassifierImpl implements
     return (AadlBaLocationReference) this.getLocationReference() ;
   }
 
-  @Override
-  public void accept(IBAVisitor visitor)
-  {
-    visitor.visit(this);
-  }
+  //  @Override
+  //  public void accept(IBAVisitor visitor)
+  //  {
+  //    visitor.visit(this);
+  //  }
 } //QualifiedNamedElementImpl

@@ -36,10 +36,10 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.ElseStatementImpl#getBehaviorActions <em>Behavior Actions</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

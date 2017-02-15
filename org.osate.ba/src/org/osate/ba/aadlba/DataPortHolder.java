@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface DataPortHolder extends ActualPortHolder, Target, IBAVisitable
+public interface DataPortHolder extends ActualPortHolder, Target
 {
   /**
    * <!-- begin-user-doc -->

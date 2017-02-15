@@ -53,11 +53,11 @@ public class AadlBaSemanticRulesChecker
       BehaviorState bs ;
       boolean result = true ;
       
-      List<Identifier> sourceStateList = bt.getSrcStates() ;
+      List<BehaviorState> sourceStateList = bt.getSrcStates() ;
       
-      for (Identifier srcState : sourceStateList)
+      for (BehaviorState srcState : sourceStateList)
       {
-         bs = (BehaviorState) srcState.getBaRef() ;
+         bs = srcState ;
          
          // Error case : only transition out of execution states or pure
          // initial state may have execute condition.
@@ -100,13 +100,13 @@ public class AadlBaSemanticRulesChecker
    {
       boolean result = true ;
     
-      List<Identifier> sourceStateList = btOwner.getSrcStates() ;
+      List<BehaviorState> sourceStateList = btOwner.getSrcStates() ;
       
       // Check the source states : they must be complete states.
       BehaviorState tmpState ;
-      for (Identifier srcState : sourceStateList)
+      for (BehaviorState srcState : sourceStateList)
       {
-        tmpState = (BehaviorState) srcState.getBaRef() ;
+        tmpState = srcState ;
          
          if(! tmpState.isComplete())
          {
@@ -144,8 +144,8 @@ public class AadlBaSemanticRulesChecker
                                      int btOwnerIndex,
                                      DeclarativeBehaviorTransition[] transArray)
    {
-      String destState = btOwner.getDestState().getId() ; 
-      
+       
+      BehaviorState destState = btOwner.getDestinationState();
       // As more than one transition can have the owner's destination state 
       // as a source state, it must 
       // find a next transition (except the given Owner to avoid circular 
@@ -161,11 +161,11 @@ public class AadlBaSemanticRulesChecker
          
          if(bt != null)
          {
-           List<Identifier> sourceStateList = bt.getSrcStates() ;
+           List<BehaviorState> sourceStateList = bt.getSrcStates() ;
            
-           for (Identifier srcState : sourceStateList)
+           for (BehaviorState srcState : sourceStateList)
             {
-               if(srcState.getId().equalsIgnoreCase(destState))
+               if(srcState.getName().equalsIgnoreCase(destState.getName()))
                {
                   
                   if(transitionEndToFinalStateCheck(bt, i, transArray))
@@ -191,7 +191,7 @@ public class AadlBaSemanticRulesChecker
                                      DeclarativeBehaviorTransition[] transArray)
    {
       BehaviorState tmpState ;
-      tmpState = (BehaviorState) bt.getDestState().getBaRef() ; 
+      tmpState = (BehaviorState) bt.getDestinationState() ; 
             
       // Error cases : destination state is not execute or final.
       if(!tmpState.isFinal() && (tmpState.isComplete() || tmpState.isInitial()))

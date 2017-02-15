@@ -23,6 +23,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="reference" eType="#//Reference"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subprogram" eType="ecore:EClass ../../org.osate.aadl2/model/aadl2.ecore#//Subprogram"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeclarativeArrayDimension" eSuperTypes="../../org.osate.aadl2/model/aadl2.ecore#//ArrayDimension #//DeclarativeBehaviorElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="dimension" lowerBound="1"
@@ -36,9 +37,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeclarativeBehaviorTransition" eSuperTypes="aadlba.ecore#//BehaviorTransition #//DeclarativeBehaviorElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="srcStates" lowerBound="1"
-        upperBound="-1" eType="#//Identifier" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="destState" lowerBound="1"
-        eType="#//Identifier" containment="true"/>
+        upperBound="-1" eType="ecore:EClass aadlba.ecore#//BehaviorState"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeclarativePropertyName" eSuperTypes="#//DeclarativeBehaviorElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyName" lowerBound="1"
@@ -46,7 +45,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="field" eType="ecore:EClass aadlba.ecore#//PropertyNameField"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="indexes" upperBound="-1"
-        eType="ecore:EClass aadlba.ecore#//IntegerValue" unsettable="true"/>
+        eType="ecore:EClass aadlba.ecore#//IntegerValue" unsettable="true" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DeclarativePropertyReference" eSuperTypes="#//DeclarativeBehaviorElement aadlba.ecore#//IntegerValueConstant aadlba.ecore#//ValueConstant">
     <eStructuralFeatures xsi:type="ecore:EReference" name="qualifiedName" eType="#//QualifiedNamedElement"
@@ -82,7 +81,15 @@
         eType="#//Identifier" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="aadlba.ecore#//ActualPortHolder #//DeclarativeBehaviorElement aadlba.ecore#//IntegerValueVariable aadlba.ecore#//ValueVariable aadlba.ecore#//ElementValues aadlba.ecore#//Target aadlba.ecore#//DispatchTriggerCondition aadlba.ecore#//DispatchTrigger">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="ids" lowerBound="1" upperBound="-1"
-        eType="#//ArrayableIdentifier" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ids" upperBound="-1" eType="#//ArrayableIdentifier"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeclarativeBehaviorStateSet" eSuperTypes="aadlba.ecore#//BehaviorState">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="states" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass aadlba.ecore#//BehaviorState" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DeclarativeBehaviorVariableSet" eSuperTypes="aadlba.ecore#//BehaviorVariable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variables" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass aadlba.ecore#//BehaviorVariable" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

@@ -40,6 +40,7 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorTransitionImpl#getSourceState <em>Source State</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorTransitionImpl#getCondition <em>Condition</em>}</li>
@@ -47,7 +48,6 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorTransitionImpl#getActionBlock <em>Action Block</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.BehaviorTransitionImpl#getPriority <em>Priority</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -84,7 +84,7 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
   protected BehaviorState destinationState;
 
   /**
-   * The cached value of the '{@link #getActionBlock() <em>Action Block</em>}' reference.
+   * The cached value of the '{@link #getActionBlock() <em>Action Block</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getActionBlock()
@@ -325,16 +325,6 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
    */
   public BehaviorActionBlock getActionBlock()
   {
-    if (actionBlock != null && ((EObject)actionBlock).eIsProxy())
-    {
-      InternalEObject oldActionBlock = (InternalEObject)actionBlock;
-      actionBlock = (BehaviorActionBlock)eResolveProxy(oldActionBlock);
-      if (actionBlock != oldActionBlock)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, oldActionBlock, actionBlock));
-      }
-    }
     return actionBlock;
   }
 
@@ -343,9 +333,16 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public BehaviorActionBlock basicGetActionBlock()
+  public NotificationChain basicSetActionBlock(BehaviorActionBlock newActionBlock, NotificationChain msgs)
   {
-    return actionBlock;
+    BehaviorActionBlock oldActionBlock = actionBlock;
+    actionBlock = newActionBlock;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, oldActionBlock, newActionBlock);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -355,10 +352,18 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
    */
   public void setActionBlock(BehaviorActionBlock newActionBlock)
   {
-    BehaviorActionBlock oldActionBlock = actionBlock;
-    actionBlock = newActionBlock;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, oldActionBlock, actionBlock));
+    if (newActionBlock != actionBlock)
+    {
+      NotificationChain msgs = null;
+      if (actionBlock != null)
+        msgs = ((InternalEObject)actionBlock).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, null, msgs);
+      if (newActionBlock != null)
+        msgs = ((InternalEObject)newActionBlock).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, null, msgs);
+      msgs = basicSetActionBlock(newActionBlock, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK, newActionBlock, newActionBlock));
   }
 
   /**
@@ -422,6 +427,8 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
         return basicSetCondition(null, msgs);
       case AadlBaPackage.BEHAVIOR_TRANSITION__DESTINATION_STATE:
         return basicSetDestinationState(null, msgs);
+      case AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK:
+        return basicSetActionBlock(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -445,8 +452,7 @@ public class BehaviorTransitionImpl extends BehaviorNamedElementImpl implements 
         if (resolve) return getDestinationState();
         return basicGetDestinationState();
       case AadlBaPackage.BEHAVIOR_TRANSITION__ACTION_BLOCK:
-        if (resolve) return getActionBlock();
-        return basicGetActionBlock();
+        return getActionBlock();
       case AadlBaPackage.BEHAVIOR_TRANSITION__PRIORITY:
         return getPriority();
     }

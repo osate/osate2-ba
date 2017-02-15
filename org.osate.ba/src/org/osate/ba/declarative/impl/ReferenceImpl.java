@@ -56,12 +56,12 @@ import org.osate.ba.declarative.Reference ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.ReferenceImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.ReferenceImpl#getBaRef <em>Ba Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.ReferenceImpl#getIds <em>Ids</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -133,7 +133,8 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.REFERENCE__OSATE_REF, oldOsateRef, osateRef)) ;
+                                        DeclarativePackage.REFERENCE__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -160,7 +161,8 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.REFERENCE__OSATE_REF, oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.REFERENCE__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -178,7 +180,8 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.REFERENCE__BA_REF, oldBaRef, baRef)) ;
+                                        DeclarativePackage.REFERENCE__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -205,7 +208,8 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.REFERENCE__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.REFERENCE__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -217,10 +221,10 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
   {
     if(ids == null)
     {
-      ids =
-            new EObjectContainmentEList<ArrayableIdentifier>(
-                  ArrayableIdentifier.class, this,
-                  DeclarativePackage.REFERENCE__IDS) ;
+      ids = new EObjectContainmentEList<ArrayableIdentifier>(
+                                                             ArrayableIdentifier.class,
+                                                             this,
+                                                             DeclarativePackage.REFERENCE__IDS) ;
     }
     return ids ;
   }
@@ -232,8 +236,7 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -249,9 +252,7 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -276,8 +277,7 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -344,8 +344,7 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {
@@ -408,8 +407,7 @@ public class ReferenceImpl extends ActualPortHolderImpl implements Reference
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {

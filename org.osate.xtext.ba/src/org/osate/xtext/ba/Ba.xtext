@@ -1,0 +1,576 @@
+grammar org.osate.xtext.Ba with org.osate.xtext.aadl2.properties.Properties
+
+import "platform:/resource/org.osate.aadl2/model/aadl2.ecore" as aadl2
+import "platform:/resource/org.osate.ba/model/aadlba.ecore"as ba
+import "platform:/resource/org.osate.ba/model/declarative.ecore"as declarative
+
+
+//import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+
+AnnexSubclause returns ba::BehaviorAnnex:
+	BehaviorAnnexSubclause
+;
+
+// behavior_annex ::=
+//   [ variables { behavior_variable }+ ]
+//   [ states { behavior_state }+ ]
+//   [ transitions { behavior_transition }+ ]
+BehaviorAnnexSubclause returns ba::BehaviorAnnex:
+     {ba::BehaviorAnnex}//'{**'
+     ('variables' 
+     	(variables+=BehaviorVariableSet (',' variables+=BehaviorVariableSet )*)+
+     )?
+     'states' 
+     	(states+=BehaviorStateSet (',' states+=BehaviorStateSet )*)+
+     'transitions' 
+        (transitions+=BehaviorTransition (',' transitions+=BehaviorTransition )*)+
+
+;
+
+// behavior_variable ::= 
+//   local_variable_declarator { , local_variable_declarator }* 
+//   : data_unique_component_classifier_reference;
+
+BehaviorVariableSet returns declarative::DeclarativeBehaviorVariableSet:
+	variables+=BehaviorVariable (',' variables+=BehaviorVariable)* ':' dataClassifier=[aadl2::DataClassifier] (
+		  '{'
+// TODO: property association reference does not work
+//			  (ownedPropertyAssociation+=PropertyAssociation)+
+		  '}'
+	    )? ';'	
+;
+
+BehaviorVariable returns ba::BehaviorVariable:
+	name=ID
+;
+
+BehaviorStateSet returns declarative::DeclarativeBehaviorStateSet:
+	states+=BehaviorState (',' states+=BehaviorState)* ':' (initial?='initial')? (complete?='complete')? (final?='final')? 'state' ';'
+;
+
+BehaviorState returns ba::BehaviorState:
+	name=ID
+;
+
+// behavior_transition ::=
+//   [ transition_identifier [ [ behavior_transition_priority ] ] : ]
+//   source_state_identifier { , source_state_identifier }*
+//    -[ behavior_condition ]->
+//   destination_state_identifier [ behavior_action_block ] ;
+
+BehaviorTransition returns declarative::DeclarativeBehaviorTransition:
+	(name=ID ('['priority=INTVALUE']')? ':')? srcStates+=[ba::BehaviorState] (',' srcStates+=[ba::BehaviorState])*
+		'-[' condition=BehaviorCondition ']->'
+		destinationState=[ba::BehaviorState] (actionBlock=BehaviorActionBlock)? ';'
+;
+
+BehaviorActionBlock returns ba::BehaviorActionBlock:
+	'{' content=BehaviorActions '}' ( 'timeout' timeout=BehaviorTime )?
+;
+
+BehaviorActions returns ba::BehaviorActions:
+	BehaviorActionSequence
+	| (=>BehaviorActionSet)
+	| (=>BehaviorAction)
+;
+
+BehaviorActionSequence returns ba::BehaviorActionSequence:
+	(actions+=BehaviorAction ';')+ actions+=BehaviorAction
+;
+
+BehaviorActionSet returns ba::BehaviorActionSet:
+	(actions+=BehaviorAction ',')+ actions+=BehaviorAction
+;
+
+BehaviorAction returns ba::BehaviorAction:
+	BasicAction
+   | IfStatement
+   | ForOrForAllStatement
+   | WhileOrDoUntilStatement
+;
+
+// basic_action ::=
+//   assignment_action
+// | communication_action
+// | timed_action
+BasicAction returns ba::BasicAction:
+	AssignmentAction
+	| CommunicationAction
+	| TimedAction
+;
+
+// assignment_action ::=
+//   target := ( value_expression | any )
+AssignmentAction returns ba::AssignmentAction :
+	target=Target ':=' ( valueExpression=ValueExpression | valueExpression=Any )
+;
+
+Any returns ba::Any :
+	{ba::Any} 'any'
+;
+
+// target ::=
+// | outgoing_port_name
+// | outgoing_subprogram_parameter
+// | data_component_reference
+// | outgoing_port_prototype_name
+Target returns ba::Target:
+	Reference
+;
+
+
+// communication_action ::=
+//   subprogram_prototype_name ! [ ( subprogram_parameter_list ) ]
+// | required_subprogram_access_name ! [ ( subprogram_parameter_list ) ]
+// | subprogram_classifier_name ! [ ( subprogram_parameter_list ) ]
+// | output_port_name ! [ ( value_expression ) ]
+// | input_port_name >>
+// | input_port_name ? [ ( target ) ]
+// | required_data_access_name !<
+// | required_data_access_name !>
+// | *!<
+// | *!>
+// | required_data_access_name . provided_subprogram_access_name ! [ ( subprogram_parameter_list ) ]
+// | data_subcomponent_name . provided_subprogram_access_name ! [ ( subprogram_parameter_list ) ]
+// | local_variable_name . provided_subprogram_access_name ! [ ( subprogram_parameter_list ) ]
+CommunicationAction returns declarative::CommAction:
+	qualifiedName=QualifiedNamedElement '!' ('(' parameters+=ParameterLabel (',' parameters+=ParameterLabel)* ')')?
+    |
+      reference=Reference
+      (
+          '?' ('(' target=Target ')')?
+        |
+          '>>'
+        |
+          '!<'
+        |
+          '!>'
+        |
+          '!' ('(' parameters+=ParameterLabel (',' parameters+=ParameterLabel)* ')')?
+        |
+          '?' ('(' target=Target ')')?
+        |
+          '!' ('(' parameters+=ParameterLabel (',' parameters+=ParameterLabel)* ')')?
+      )
+    |
+      ('*!<' | '*!>')
+
+//    |
+//      qualifiedName=QualifiedNamedElement '!' ('(' parameters+=ParameterLabel (',' parameters+=ParameterLabel)* ')')?
+;
+
+QualifiedNamedElement returns declarative::QualifiedNamedElement:
+	baNamespace=QualifiedIndentifier baName=Identifier
+;
+
+QualifiedIndentifier returns declarative::Identifier:
+	id=NameSpace
+;
+
+Identifier returns declarative::Identifier:
+	id=QualifiedName
+;
+
+NameSpace:
+    (ID '::' )+;
+
+QualifiedName:
+    ID ('.' ID)*;
+
+Reference returns declarative::Reference:
+	ids+=ArrayIdentifier ('.' ids+=ArrayIdentifier )*
+;
+
+// array_identifier ::=
+//   identifier { integer_value }*
+ArrayIdentifier returns declarative::ArrayableIdentifier:
+    id=ID ('[' arrayIndexes+=IntegerValue ']')*
+;
+
+ParameterLabel returns ba::ParameterLabel:
+	ValueExpression
+;
+
+// timed_action ::= 
+//   computation ( behavior_time [ .. behavior_time ] ) [ in_binding ]
+TimedAction returns ba::TimedAction :
+	'computation' '(' lowerTime=BehaviorTime ('..' upperTime=BehaviorTime)? ')' 
+	('in' 'binding' processorClassifier+=[aadl2::ProcessorClassifier] (',' processorClassifier+=[aadl2::ProcessorClassifier])*)?
+;
+
+IfStatement returns ba::IfStatement:
+	'if' '(' logicalValueExpression=ValueExpression ')'  behaviorActions=BehaviorActions
+	(elseStatement=ElseStatement|elseStatement=ElseIfStatement)?
+	'endif'
+;
+
+ElseIfStatement returns ba::IfStatement:
+	elif?='elsif' '(' logicalValueExpression=ValueExpression ')'  behaviorActions=BehaviorActions
+	
+;
+
+ElseStatement returns ba::ElseStatement:
+	'else' behaviorActions=BehaviorActions
+;
+
+ForOrForAllStatement returns ba::ForOrForAllStatement:
+	('for'|forAll?='forall') '(' iterativeVariable=IterativeVariable 
+        'in' iteratedValues=ElementValues ')' 
+        '{' behaviorActions=BehaviorActions '}'
+;
+
+IterativeVariable returns ba::IterativeVariable:
+	name=ID ':' dataClassifier=[aadl2::DataClassifier]
+;
+
+// element_values ::=
+//   integer_range
+// | event_data_port_name
+// | array_data_component_reference
+ElementValues returns ba::ElementValues:
+	IntegerRange
+	| Reference
+;
+
+WhileOrDoUntilStatement returns ba::WhileOrDoUntilStatement:
+	'while' '(' logicalValueExpression=ValueExpression ')' '{' behaviorActions=BehaviorActions '}'
+	|
+	doUntil?='do' behaviorActions=BehaviorActions 'until' '(' logicalValueExpression=ValueExpression ')'
+;
+
+// value_expression ::=
+//   relation { logical_operator relation }*
+ValueExpression returns ba::ValueExpression:
+	relations+=Relation (logicalOperators+=LogicalOperator relations+=Relation)?
+;
+
+// relation ::=
+//   simple_expression [ relational_operator simple_expression ]
+Relation returns ba::Relation:
+	firstExpression=SimpleExpression (relationalOperator=RelationalOperator secondExpression=SimpleExpression)?
+;
+
+// simple_expression ::=
+//   [ unary_adding_operator ] term { binary_adding_operator term }*
+SimpleExpression returns ba::SimpleExpression:
+	(unaryAddingOperator=UnaryAddingOperator)? terms+=Term (binaryAddingOperators+=BinaryAddingOperator terms+=Term)*
+;
+
+// term ::=
+//   factor { multiplying_operator factor }*
+Term returns ba::Term:
+	factors+=Factor (multiplyingOperators+=MultiplyingOperator factors+=Factor)*
+;
+
+// factor ::=
+//   value [ binary_numeric_operator value ]
+// | unary_numeric_operator value
+// | unary_boolean_operator value
+Factor returns ba::Factor:
+	 firstValue=Value (binaryNumericOperator=BinaryNumericOperator secondValue=Value)?
+   | unaryNumericOperator=UnaryNumericOperator firstValue=Value
+   | unaryBooleanOperator=UnaryBooleanOperator firstValue=Value
+;
+
+
+// value ::= value_variable
+// | value_constant
+// | ( value_expression )
+Value returns ba::Value:
+	ValueConstant
+	| => ValueVariable
+	| => '(' ValueExpression ')'
+;
+
+// value_variable ::=
+//   incoming_port_name
+// | incoming_port_name ?
+// | incoming_subprogram_parameter
+// | incoming_port_prototype_name
+// | data_component_reference
+// | port_name ’ count
+// | port_name ’ fresh
+ValueVariable returns ba::ValueVariable:
+	PortDequeueValue
+	| => PortCountValue
+	| => PortFreshValue
+	| => ValueVariableReference
+;
+
+ValueVariableReference returns declarative::Reference:
+     Reference;
+
+PortDequeueValue returns declarative::Reference:
+	Reference '?'
+;
+
+PortCountValue returns declarative::Reference:
+	Reference '\'count'
+;
+
+PortFreshValue returns declarative::Reference:
+	Reference '\'fresh'
+;
+
+// value_constant ::= 
+//   boolean_literal
+// | numeric_literal 
+// | string_literal
+// | property_constant
+// | property_reference
+ValueConstant returns ba::ValueConstant:
+	 // Ambiguity between qualified or unqualified  property constant and
+    // qualified or unqualified property reference with only one property name and
+    // no property field. so property constants are parsed as property references
+    // (see property reference). 
+       BehaviorNumericLiteral
+     | PropertyReference
+     | BehaviorBooleanLiteral
+     | BehaviorStringLiteral
+;
+
+
+BehaviorStringLiteral returns ba::BehaviorStringLiteral:
+	value=NoQuoteString
+;
+
+// numeric_literal ::= <refer to [AS5506A 15.4]>
+// numeric literal without optional sign and unit
+BehaviorNumericLiteral returns ba::BehaviorIntegerLiteral:
+	{ba::BehaviorIntegerLiteral}
+    value=SignedInt
+;
+
+BehaviorBooleanLiteral returns ba::BehaviorBooleanLiteral:
+	{ba::BehaviorBooleanLiteral}
+	(value?='true' | 'false')
+;
+
+// property_constant ::=
+//   # [ property_set_identifier :: ] property_constant_identifier
+
+// property_reference ::=
+//   # [ property_set_identifier :: ] property_value_name { . field_record_property_name }*
+// | own_component_element_reference # property_name { . field_record_property_name }*
+// | unique_component_classifier_reference # property_name { . field_record_property_name }*
+
+// component_element_reference ::=
+//   subcomponent_name
+// | local_variable_name
+// | binded_prototype_name
+// | feature_name
+
+// Ambiguity between qualified or unqualified  property constant and
+// qualified or unqualified property reference with only one property name and
+// no property field. so property constants are parsed as property references
+// (see property reference).
+
+// Ambiguity between a unique component classifier reference without namespace
+// and a component element reference.
+// Ambiguity between a property literal and a property name without field.
+
+PropertyReference returns declarative::DeclarativePropertyReference:
+    (   
+        ( propertySet?="#" (ID)? )
+      | 
+        ( 
+          (   qualifiedName=QualifiedNamedElement
+            | 
+              reference=Reference
+          )
+          '#'
+        )
+    )
+    
+    propertyNames+=PropertyName ('.' propertyNames+=PropertyName)*
+;
+
+// property_name ::=
+//   property_identifier [ property_field ]
+
+// property_field ::=
+//   [ integer_value ]* (enumeration and list properties supported only)
+// | . item_list_identifier (enumeration and list properties supported only)
+// | . upper_bound (range properties supported only)
+// | . lower_bound (range properties supported only)
+// Ambiguity between a property literal and a property name without field.
+PropertyName returns declarative::DeclarativePropertyName :
+	propertyName=Identifier  (   
+           ( '[' indexes+=IntegerValue ']' )+
+         |
+           ( 
+             '.'
+             (
+                 'upper_bound'
+               |
+                 'lower_bound'
+             )
+           )
+       )?  
+;
+
+
+// binary_numeric_operator ::= **
+enum BinaryNumericOperator returns ba::BinaryNumericOperator:
+	MultiplyMultiply='**'
+;
+
+// unary_numeric_operator ::= abs
+enum UnaryNumericOperator returns ba::UnaryNumericOperator:
+	Abs='abs'
+;
+
+// unary_boolean_operator ::= not
+enum UnaryBooleanOperator returns ba::UnaryBooleanOperator:
+  Not='not'
+;
+
+enum MultiplyingOperator returns ba::MultiplyingOperator:
+	Multiply='*'
+	| Divide='/'
+	| Mod='mod'
+	| Rem='rem'
+;
+
+enum BinaryAddingOperator returns ba::BinaryAddingOperator:
+	Plus='+'
+	|Minus='-'
+;
+
+enum UnaryAddingOperator returns ba::UnaryAddingOperator:
+	Minus='-'
+;
+
+// logical_operator ::= and | or | xor
+enum LogicalOperator returns ba::LogicalOperator:
+	And='and'
+	| Or='or'
+	| Xor='xor'
+;
+
+// relational_operator ::= = | != | < | <= | > | >=
+enum RelationalOperator returns ba::RelationalOperator:
+	Equal='=' 
+	| NotEqual='!='
+	| LessThan='<' 
+	| LessOrEqualThan='<=' 
+	| GreaterThan='>' 
+	| GreaterOrEqualThan='>='
+;
+
+// integer_range ::= integer_value .. integer_value
+IntegerRange returns ba::IntegerRange:
+    lowerIntegerValue=IntegerValue '..' upperIntegerValue=IntegerValue
+;
+
+// integer_value ::=
+//   integer_value_variable
+// | integer_value_constant
+IntegerValue returns ba::IntegerValue:
+     IntegerValueConstant 
+     | IntegerValueVariable
+;
+
+IntegerValueConstant returns ba::IntegerValueConstant:
+     BehaviorIntegerLiteral
+	 | PropertyReference  
+;
+
+IntegerValueVariable returns ba::IntegerValueVariable:
+	ValueVariableReference
+;
+
+BehaviorIntegerLiteral returns ba::BehaviorIntegerLiteral:
+	value=SignedInt
+;
+
+BehaviorTime returns ba::BehaviorTime:
+	integerValue=IntegerValue unit=[aadl2::UnitLiteral|QCREF]
+;
+
+BehaviorCondition returns ba::BehaviorCondition:
+	DispatchCondition
+	| ExecuteCondition
+	| ExternalCondition
+	| InternalCondition
+;
+
+ExternalCondition:
+	'TBD_ExternalCondition'
+;
+
+InternalCondition:
+	'TBD_InternalCondition'
+;
+
+ExecuteCondition returns ba::ExecuteCondition:
+	(
+		ValueExpression
+		| TimeoutExecuteCondition 
+		| OthewiseCondition
+	)?
+;
+
+TimeoutExecuteCondition:
+	'TBD_TimeoutExecuteCondition'
+;
+
+
+OthewiseCondition returns ba::Otherwise:
+	'otherwise' {ba::Otherwise}
+;
+
+DispatchCondition returns ba::DispatchCondition:
+	{ba::DispatchCondition}
+	'on' 'dispatch' 
+	( 
+		dispatchTriggerCondition=DispatchTriggerCondition
+		| dispatchTriggerCondition=StopDispatchTriggerCondition
+		| dispatchTriggerCondition=CompletionRelativeTimeoutCatch
+		| dispatchTriggerCondition=DispatchRelativeTimeoutCatch
+	)? 
+	( 'frozen' '(' frozenPorts+=FrozenPorts (',' frozenPorts+=FrozenPorts)* ')' )?
+;
+
+DispatchRelativeTimeoutCatch returns ba::DispatchRelativeTimeout :
+	'timeout' {ba::DispatchRelativeTimeout}
+;
+
+TimeoutResetPort returns ba::PortHolder:
+	// TODO: holder mechanism
+	'TBD_Timeout'
+;
+
+CompletionRelativeTimeoutCatch returns ba::CompletionRelativeTimeout:
+	// TODO: add timeout ports ( ( TimeoutResetPort ( 'or' TimeoutResetPort )* ) )?
+	'timeout' integerValue=IntegerValue unit=[aadl2::UnitLiteral]
+;
+
+FrozenPorts returns ba::ActualPortHolder:
+	element=[aadl2::Port]
+;
+
+DispatchTriggerLogicalExpression returns ba::DispatchTriggerLogicalExpression:
+	dispatchConjunctions+=DispatchConjunction 
+	('or' dispatchConjunctions+=DispatchConjunction)*
+;
+
+DispatchConjunction returns ba::DispatchConjunction:
+	dispatchTriggers+=DispatchTrigger 
+	('and' dispatchTriggers+=DispatchTrigger)*
+;
+
+DispatchTriggerCondition returns ba::DispatchTriggerCondition:
+	 DispatchTriggerLogicalExpression
+; 
+
+DispatchTrigger returns declarative::Reference:
+	Reference
+;
+
+
+
+StopDispatchTriggerCondition returns ba::DispatchTriggerConditionStop:
+	'stop' {ba::DispatchTriggerConditionStop}
+;

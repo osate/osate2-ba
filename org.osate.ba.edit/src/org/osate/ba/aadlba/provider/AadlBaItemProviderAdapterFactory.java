@@ -2091,6 +2091,31 @@ public class AadlBaItemProviderAdapterFactory extends AadlBaAdapterFactory imple
   }
 
   /**
+   * This keeps track of the one adapter used for all {@link org.osate.ba.aadlba.InternalFeatureHolder} instances.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected InternalFeatureHolderItemProvider internalFeatureHolderItemProvider;
+
+  /**
+   * This creates an adapter for a {@link org.osate.ba.aadlba.InternalFeatureHolder}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Adapter createInternalFeatureHolderAdapter()
+  {
+    if (internalFeatureHolderItemProvider == null)
+    {
+      internalFeatureHolderItemProvider = new InternalFeatureHolderItemProvider(this);
+    }
+
+    return internalFeatureHolderItemProvider;
+  }
+
+  /**
    * This returns the root adapter factory that contains this factory.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2219,9 +2244,9 @@ public class AadlBaItemProviderAdapterFactory extends AadlBaAdapterFactory imple
     if (behaviorVariableItemProvider != null) behaviorVariableItemProvider.dispose();
     if (behaviorVariableHolderItemProvider != null) behaviorVariableHolderItemProvider.dispose();
     if (calledSubprogramHolderItemProvider != null) calledSubprogramHolderItemProvider.dispose();
+    if (classifierFeaturePropertyReferenceItemProvider != null) classifierFeaturePropertyReferenceItemProvider.dispose();
     if (classifierPropertyReferenceItemProvider != null) classifierPropertyReferenceItemProvider.dispose();
     if (completionRelativeTimeoutItemProvider != null) completionRelativeTimeoutItemProvider.dispose();
-    if (classifierFeaturePropertyReferenceItemProvider != null) classifierFeaturePropertyReferenceItemProvider.dispose();
     if (dataAccessHolderItemProvider != null) dataAccessHolderItemProvider.dispose();
     if (dataAccessPrototypeHolderItemProvider != null) dataAccessPrototypeHolderItemProvider.dispose();
     if (dataComponentReferenceItemProvider != null) dataComponentReferenceItemProvider.dispose();
@@ -2258,11 +2283,11 @@ public class AadlBaItemProviderAdapterFactory extends AadlBaAdapterFactory imple
     if (portFreshValueItemProvider != null) portFreshValueItemProvider.dispose();
     if (portPrototypeHolderItemProvider != null) portPrototypeHolderItemProvider.dispose();
     if (portSendActionItemProvider != null) portSendActionItemProvider.dispose();
-    if (propertyNameHolderItemProvider != null) propertyNameHolderItemProvider.dispose();
     if (propertyAssociationHolderItemProvider != null) propertyAssociationHolderItemProvider.dispose();
     if (propertyExpressionHolderItemProvider != null) propertyExpressionHolderItemProvider.dispose();
-    if (propertyTypeHolderItemProvider != null) propertyTypeHolderItemProvider.dispose();
+    if (propertyNameHolderItemProvider != null) propertyNameHolderItemProvider.dispose();
     if (propertySetPropertyReferenceItemProvider != null) propertySetPropertyReferenceItemProvider.dispose();
+    if (propertyTypeHolderItemProvider != null) propertyTypeHolderItemProvider.dispose();
     if (relationItemProvider != null) relationItemProvider.dispose();
     if (simpleExpressionItemProvider != null) simpleExpressionItemProvider.dispose();
     if (structUnionElementItemProvider != null) structUnionElementItemProvider.dispose();
@@ -2281,6 +2306,7 @@ public class AadlBaItemProviderAdapterFactory extends AadlBaAdapterFactory imple
     if (upperBoundItemProvider != null) upperBoundItemProvider.dispose();
     if (valueExpressionItemProvider != null) valueExpressionItemProvider.dispose();
     if (whileOrDoUntilStatementItemProvider != null) whileOrDoUntilStatementItemProvider.dispose();
+    if (internalFeatureHolderItemProvider != null) internalFeatureHolderItemProvider.dispose();
   }
 
 }

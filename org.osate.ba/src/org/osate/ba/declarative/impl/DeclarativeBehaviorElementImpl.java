@@ -41,18 +41,17 @@ import org.osate.ba.declarative.DeclarativePackage ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeBehaviorElementImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeBehaviorElementImpl#getBaRef <em>Ba Ref</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class DeclarativeBehaviorElementImpl extends
-                                                    BehaviorElementImpl
-                                                                       implements
-                                                                       DeclarativeBehaviorElement
+public abstract class DeclarativeBehaviorElementImpl extends BehaviorElementImpl
+                                                     implements
+                                                     DeclarativeBehaviorElement
 {
   /**
    * The cached value of the '{@link #getOsateRef() <em>Osate Ref</em>}' reference.
@@ -110,8 +109,8 @@ public abstract class DeclarativeBehaviorElementImpl extends
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__OSATE_REF,
-                oldOsateRef, osateRef)) ;
+                                        DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -138,8 +137,8 @@ public abstract class DeclarativeBehaviorElementImpl extends
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__OSATE_REF,
-            oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -157,8 +156,8 @@ public abstract class DeclarativeBehaviorElementImpl extends
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__BA_REF,
-                oldBaRef, baRef)) ;
+                                        DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -185,8 +184,8 @@ public abstract class DeclarativeBehaviorElementImpl extends
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__BA_REF, oldBaRef,
-            baRef)) ;
+                                    DeclarativePackage.DECLARATIVE_BEHAVIOR_ELEMENT__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -195,9 +194,7 @@ public abstract class DeclarativeBehaviorElementImpl extends
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -219,8 +216,7 @@ public abstract class DeclarativeBehaviorElementImpl extends
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {

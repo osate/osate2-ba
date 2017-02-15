@@ -43,17 +43,17 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeArrayDimensionImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeArrayDimensionImpl#getBaRef <em>Ba Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.DeclarativeArrayDimensionImpl#getDimension <em>Dimension</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
 public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
-                                                                     DeclarativeArrayDimension
+                                           DeclarativeArrayDimension
 {
   /**
    * The cached value of the '{@link #getOsateRef() <em>Osate Ref</em>}' reference.
@@ -121,8 +121,8 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__OSATE_REF,
-                oldOsateRef, osateRef)) ;
+                                        DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -149,8 +149,8 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__OSATE_REF,
-            oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -168,8 +168,8 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__BA_REF,
-                oldBaRef, baRef)) ;
+                                        DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -196,8 +196,8 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__BA_REF, oldBaRef,
-            baRef)) ;
+                                    DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -222,10 +222,11 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
     dimension = newDimension ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
-                  oldDimension, newDimension) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
+                                                             oldDimension,
+                                                             newDimension) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -245,27 +246,23 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
     {
       NotificationChain msgs = null ;
       if(dimension != null)
-        msgs =
-              ((InternalEObject) dimension)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) dimension).eInverseRemove(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
+                                                            null, msgs) ;
       if(newDimension != null)
-        msgs =
-              ((InternalEObject) newDimension)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newDimension).eInverseAdd(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
+                                                            null, msgs) ;
       msgs = basicSetDimension(newDimension, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
-            newDimension, newDimension)) ;
+                                    DeclarativePackage.DECLARATIVE_ARRAY_DIMENSION__DIMENSION,
+                                    newDimension, newDimension)) ;
   }
 
   /**
@@ -275,8 +272,7 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
@@ -292,9 +288,7 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -318,8 +312,7 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
    * @generated
    */
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -385,8 +378,7 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == BehaviorElement.class)
     {
@@ -417,8 +409,7 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == BehaviorElement.class)
     {
@@ -449,9 +440,9 @@ public class DeclarativeArrayDimensionImpl extends ArrayDimensionImpl implements
     return (AadlBaLocationReference) this.getLocationReference() ;
   }
 
-  @Override
-  public void accept(IBAVisitor visitor)
-  {
-    visitor.visit(this);    
-  }
+  //  @Override
+  //  public void accept(IBAVisitor visitor)
+  //  {
+  //    visitor.visit(this);    
+  //  }
 } //DeclarativeArrayDimensionImpl

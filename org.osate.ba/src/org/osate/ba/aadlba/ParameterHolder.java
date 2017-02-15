@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface ParameterHolder extends DataHolder, Target, ElementValues, FeatureHolder, IBAVisitable
+public interface ParameterHolder extends DataHolder, Target, ElementValues, FeatureHolder
 {
   /**
    * <!-- begin-user-doc -->

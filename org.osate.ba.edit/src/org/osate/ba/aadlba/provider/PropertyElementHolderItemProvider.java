@@ -208,12 +208,12 @@ public class PropertyElementHolderItemProvider extends BehaviorElementItemProvid
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INDEXABLE_ELEMENT__ARRAY_INDEXES,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.INDEXABLE_ELEMENT__ARRAY_INDEXES,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter

@@ -697,6 +697,15 @@ public interface AadlBaFactory extends EFactory
   WhileOrDoUntilStatement createWhileOrDoUntilStatement();
 
   /**
+   * Returns a new object of class '<em>Internal Feature Holder</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Internal Feature Holder</em>'.
+   * @generated
+   */
+  InternalFeatureHolder createInternalFeatureHolder();
+
+  /**
    * Returns a new object of class '<em>Property Set Property Reference</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

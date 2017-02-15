@@ -289,12 +289,12 @@ public class FactorItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.FACTOR__FIRST_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.FACTOR__FIRST_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
@@ -424,12 +424,12 @@ public class FactorItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.FACTOR__SECOND_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.FACTOR__SECOND_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter

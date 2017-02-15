@@ -32,7 +32,7 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  * @model
  * @generated
  */
-public interface IterativeVariableHolder extends DataHolder, IBAVisitable
+public interface IterativeVariableHolder extends DataHolder
 {
   /**
    * <!-- begin-user-doc -->

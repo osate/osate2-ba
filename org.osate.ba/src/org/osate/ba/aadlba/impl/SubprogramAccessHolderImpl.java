@@ -53,12 +53,12 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramAccessHolderImpl#getElement <em>Element</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramAccessHolderImpl#getArrayIndexes <em>Array Indexes</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramAccessHolderImpl#getGroupHolders <em>Group Holders</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

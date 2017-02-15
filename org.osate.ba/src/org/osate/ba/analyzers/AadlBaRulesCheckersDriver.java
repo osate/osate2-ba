@@ -208,9 +208,9 @@ public class AadlBaRulesCheckersDriver
              {
                DeclarativeBehaviorTransition tmp = (DeclarativeBehaviorTransition)
                                                                             bt ;
-               for(Identifier src : tmp.getSrcStates())
+               for(BehaviorState src : tmp.getSrcStates())
                {
-                 if(s.getName().equalsIgnoreCase(src.getId()))
+                 if(s.getName().equalsIgnoreCase(src.getName()))
                  {
                    btTmp.add(tmp) ;
                  }
@@ -257,11 +257,11 @@ public class AadlBaRulesCheckersDriver
            
            boolean result = true ;
             
-            List<Identifier> sourceStateList = _currentBt.getSrcStates() ;
+            List<BehaviorState> sourceStateList = _currentBt.getSrcStates() ;
             
             // Check source identifiers.
             
-            for(Identifier srcState : sourceStateList)
+            for(BehaviorState srcState : sourceStateList)
             {
                result &= _legality.D_3_L6_Check(_currentBt, srcState) ;
                result &= _legality.D_3_L7_Check(_currentBt, srcState) ;

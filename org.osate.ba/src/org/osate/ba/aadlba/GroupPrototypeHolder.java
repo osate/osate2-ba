@@ -31,16 +31,16 @@ import org.osate.ba.utils.visitor.IBAVisitable ;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.GroupPrototypeHolder#getPrototypeBinding <em>Prototype Binding</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.ba.aadlba.AadlBaPackage#getGroupPrototypeHolder()
  * @model
  * @generated
  */
-public interface GroupPrototypeHolder extends GroupHolder, IBAVisitable
+public interface GroupPrototypeHolder extends GroupHolder
 {
 
   /**

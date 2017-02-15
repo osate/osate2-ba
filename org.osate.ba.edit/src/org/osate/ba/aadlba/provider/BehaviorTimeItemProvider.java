@@ -218,12 +218,12 @@ public class BehaviorTimeItemProvider
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.BEHAVIOR_TIME__INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter
         (AadlBaPackage.Literals.BEHAVIOR_TIME__INTEGER_VALUE,
-         AadlBaFactory.eINSTANCE.createClassifierFeaturePropertyReference()));
+         AadlBaFactory.eINSTANCE.createClassifierPropertyReference()));
 
     newChildDescriptors.add
       (createChildParameter

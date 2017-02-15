@@ -80,7 +80,7 @@ public class AadlBaSwitch<T> extends Switch<T>
    * Checks whether this is a switch for the given package.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @parameter ePackage the package in question.
+   * @param ePackage the package in question.
    * @return whether this is a switch for the given package.
    * @generated
    */
@@ -1601,6 +1601,20 @@ public class AadlBaSwitch<T> extends Switch<T>
         if (result == null) result = caseBehaviorActions(whileOrDoUntilStatement);
         if (result == null) result = caseBehaviorElement(whileOrDoUntilStatement);
         if (result == null) result = caseElement(whileOrDoUntilStatement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case AadlBaPackage.INTERNAL_FEATURE_HOLDER:
+      {
+        InternalFeatureHolder internalFeatureHolder = (InternalFeatureHolder)theEObject;
+        T result = caseInternalFeatureHolder(internalFeatureHolder);
+        if (result == null) result = caseFeatureHolder(internalFeatureHolder);
+        if (result == null) result = caseClassifierFeatureHolder(internalFeatureHolder);
+        if (result == null) result = caseIndexableElement(internalFeatureHolder);
+        if (result == null) result = caseGroupableElement(internalFeatureHolder);
+        if (result == null) result = caseElementHolder(internalFeatureHolder);
+        if (result == null) result = caseBehaviorElement(internalFeatureHolder);
+        if (result == null) result = caseElement(internalFeatureHolder);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -3316,6 +3330,22 @@ public class AadlBaSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseWhileOrDoUntilStatement(WhileOrDoUntilStatement object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Internal Feature Holder</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Internal Feature Holder</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseInternalFeatureHolder(InternalFeatureHolder object)
   {
     return null;
   }

@@ -37,11 +37,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.PortDequeueActionImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.PortDequeueActionImpl#getTarget <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

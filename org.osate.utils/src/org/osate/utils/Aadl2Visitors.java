@@ -33,6 +33,8 @@ import org.osate.aadl2.Classifier ;
 import org.osate.aadl2.ComponentImplementation ;
 import org.osate.aadl2.Element ;
 import org.osate.aadl2.Feature ;
+import org.osate.aadl2.ImplementationExtension;
+import org.osate.aadl2.InternalFeature;
 import org.osate.aadl2.NamedElement ;
 import org.osate.aadl2.Namespace ;
 import org.osate.aadl2.PackageSection ;
@@ -133,6 +135,34 @@ public class Aadl2Visitors
      }
 
      return result ;
+  }
+  
+  /**
+   * Find the first occurrence of an InternalFeature within a given aadl's component
+   * implementation (and ancestors) which name equals to a given name. Return {@code null} if
+   * no InternalFeature is found.
+   * 
+   * @param ci the given aadl's component implementation
+   * @param featureName the given name 
+   * @return the first occurrence of a Feature related to the given name or
+   * {@code null}
+   */
+  public static InternalFeature findFeatureInComponent(ComponentImplementation ci,
+                                                 String featureName)
+  {
+     for(InternalFeature f : ci.getOwnedInternalFeatures())
+     {
+        if(featureName.equalsIgnoreCase(f.getName()))
+        {
+           return f ;
+        }
+     }
+     if(ci.getOwnedExtension() != null)
+     {
+    	ImplementationExtension ie =  ci.getOwnedExtension();
+    	return findFeatureInComponent(ie.getExtended(),featureName);
+     }
+     return null ;
   }
   
   /**

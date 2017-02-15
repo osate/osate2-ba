@@ -104,6 +104,7 @@ import org.osate.ba.aadlba.IntegerRange;
 import org.osate.ba.aadlba.IntegerValue;
 import org.osate.ba.aadlba.IntegerValueConstant;
 import org.osate.ba.aadlba.IntegerValueVariable;
+import org.osate.ba.aadlba.InternalFeatureHolder;
 import org.osate.ba.aadlba.IterativeVariable;
 import org.osate.ba.aadlba.IterativeVariableHolder;
 import org.osate.ba.aadlba.Literal;
@@ -916,6 +917,13 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
    * @generated
    */
   private EClass whileOrDoUntilStatementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass internalFeatureHolderEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -3019,6 +3027,16 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getInternalFeatureHolder()
+  {
+    return internalFeatureHolderEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPropertySetPropertyReference()
   {
     return propertySetPropertyReferenceEClass;
@@ -3617,6 +3635,8 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     createEReference(whileOrDoUntilStatementEClass, WHILE_OR_DO_UNTIL_STATEMENT__LOGICAL_VALUE_EXPRESSION);
     createEAttribute(whileOrDoUntilStatementEClass, WHILE_OR_DO_UNTIL_STATEMENT__DO_UNTIL);
 
+    internalFeatureHolderEClass = createEClass(INTERNAL_FEATURE_HOLDER);
+
     // Create enums
     behaviorFeatureTypeEEnum = createEEnum(BEHAVIOR_FEATURE_TYPE);
     binaryAddingOperatorEEnum = createEEnum(BINARY_ADDING_OPERATOR);
@@ -3858,6 +3878,7 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     valueExpressionEClass.getESuperTypes().add(this.getExecuteCondition());
     valueVariableEClass.getESuperTypes().add(this.getValue());
     whileOrDoUntilStatementEClass.getESuperTypes().add(this.getLoopStatement());
+    internalFeatureHolderEClass.getESuperTypes().add(this.getFeatureHolder());
 
     // Initialize classes and features; add operations and parameters
     initEClass(actualPortHolderEClass, ActualPortHolder.class, "ActualPortHolder", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3901,8 +3922,8 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     initEReference(getBehaviorAnnex_Variables(), this.getBehaviorVariable(), null, "variables", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviorAnnex_States(), this.getBehaviorState(), null, "states", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviorAnnex_Transitions(), this.getBehaviorTransition(), null, "transitions", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviorAnnex_Actions(), this.getBehaviorActionBlock(), null, "actions", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviorAnnex_Conditions(), this.getBehaviorCondition(), null, "conditions", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehaviorAnnex_Actions(), this.getBehaviorActionBlock(), null, "actions", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehaviorAnnex_Conditions(), this.getBehaviorCondition(), null, "conditions", null, 0, -1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviorAnnex_InitialState(), this.getBehaviorState(), null, "initialState", null, 1, 1, BehaviorAnnex.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(behaviorBooleanLiteralEClass, BehaviorBooleanLiteral.class, "BehaviorBooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -3939,7 +3960,7 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     initEReference(getBehaviorTransition_SourceState(), this.getBehaviorState(), this.getBehaviorState_OutgoingTransitions(), "sourceState", null, 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviorTransition_Condition(), this.getBehaviorCondition(), null, "condition", null, 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getBehaviorTransition_DestinationState(), this.getBehaviorState(), this.getBehaviorState_IncomingTransitions(), "destinationState", null, 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getBehaviorTransition_ActionBlock(), this.getBehaviorActionBlock(), null, "actionBlock", null, 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBehaviorTransition_ActionBlock(), this.getBehaviorActionBlock(), null, "actionBlock", null, 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getBehaviorTransition_Priority(), theAadl2Package.getInteger(), "priority", "-1", 0, 1, BehaviorTransition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(behaviorVariableEClass, BehaviorVariable.class, "BehaviorVariable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4157,7 +4178,7 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     initEClass(portPrototypeHolderEClass, PortPrototypeHolder.class, "PortPrototypeHolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(portSendActionEClass, PortSendAction.class, "PortSendAction", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPortSendAction_Port(), this.getActualPortHolder(), null, "port", null, 0, 1, PortSendAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPortSendAction_Port(), this.getFeatureHolder(), null, "port", null, 0, 1, PortSendAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPortSendAction_ValueExpression(), this.getValueExpression(), null, "valueExpression", null, 0, 1, PortSendAction.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyAssociationHolderEClass, PropertyAssociationHolder.class, "PropertyAssociationHolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -4293,6 +4314,13 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     initEReference(getWhileOrDoUntilStatement_LogicalValueExpression(), this.getValueExpression(), null, "logicalValueExpression", null, 1, 1, WhileOrDoUntilStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getWhileOrDoUntilStatement_DoUntil(), this.getBoolean(), "doUntil", "false", 0, 1, WhileOrDoUntilStatement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(internalFeatureHolderEClass, InternalFeatureHolder.class, "InternalFeatureHolder", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    op = addEOperation(internalFeatureHolderEClass, null, "setInternalFeature", 0, 1, IS_UNIQUE, IS_ORDERED);
+    addEParameter(op, theAadl2Package.getInternalFeature(), "internalFeature", 1, 1, IS_UNIQUE, IS_ORDERED);
+
+    addEOperation(internalFeatureHolderEClass, theAadl2Package.getInternalFeature(), "getInternalFeature", 1, 1, IS_UNIQUE, IS_ORDERED);
+
     // Initialize enums and add enum literals
     initEEnum(behaviorFeatureTypeEEnum, BehaviorFeatureType.class, "BehaviorFeatureType");
     addEEnumLiteral(behaviorFeatureTypeEEnum, BehaviorFeatureType.NONE);
@@ -4388,6 +4416,7 @@ public class AadlBaPackageImpl extends EPackageImpl implements AadlBaPackage
     addEEnumLiteral(featureTypeEEnum, FeatureType.SYSTEM_SUBCOMPONENT);
     addEEnumLiteral(featureTypeEEnum, FeatureType.PROCESSOR_CLASSIFIER);
     addEEnumLiteral(featureTypeEEnum, FeatureType.PROCESS_CLASSIFIER);
+    addEEnumLiteral(featureTypeEEnum, FeatureType.INTERNAL_FEATURE);
 
     initEEnum(logicalOperatorEEnum, LogicalOperator.class, "LogicalOperator");
     addEEnumLiteral(logicalOperatorEEnum, LogicalOperator.NONE);

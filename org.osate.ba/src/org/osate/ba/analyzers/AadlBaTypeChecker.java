@@ -51,6 +51,7 @@ import org.osate.aadl2.EventDataPort ;
 import org.osate.aadl2.EventPort ;
 import org.osate.aadl2.Feature ;
 import org.osate.aadl2.FeaturePrototypeBinding ;
+import org.osate.aadl2.InternalFeature ;
 import org.osate.aadl2.NamedElement ;
 import org.osate.aadl2.NumberValue ;
 import org.osate.aadl2.Parameter ;
@@ -166,18 +167,20 @@ public class AadlBaTypeChecker
   {
     boolean result = true ;
     IntegerValueConstant ivc = null ;
-    QualifiedNamedElement uccr ;
+//    QualifiedNamedElement uccr ;
 
     for(BehaviorVariable bv : _ba.getVariables())
     {
-      uccr = (QualifiedNamedElement) bv.getDataClassifier() ;
+//      uccr = (QualifiedNamedElement) bv.getDataClassifier() ;
+//      
+//      DataClassifier dc = (DataClassifier) 
+//           uniqueComponentClassifierReferenceResolver(uccr,
+//                                                      TypeCheckRule.DATA_UCCR) ;
       
-      DataClassifier dc = (DataClassifier) 
-           uniqueComponentClassifierReferenceResolver(uccr,
-                                                      TypeCheckRule.DATA_UCCR) ;
+      DataClassifier dc = bv.getDataClassifier();
       
-      _hl.addToHyperlinking(uccr.getAadlBaLocationReference(),
-                            dc) ;
+//      _hl.addToHyperlinking(uccr.getAadlBaLocationReference(),
+//                            dc) ;
       
       result &= dc != null ;
       bv.setDataClassifier(dc) ;
@@ -581,10 +584,10 @@ public class AadlBaTypeChecker
     }
   }
   
-  private boolean behaviorTimeCheck(DeclarativeTime dbt,
+  private boolean behaviorTimeCheck(BehaviorTime bt,
                                     BehaviorTime result)
   {
-    IntegerValue tmp = integerValueCheck(dbt.getIntegerValue());
+    IntegerValue tmp = integerValueCheck(bt.getIntegerValue());
 
     // The returned value may be different from the tested value
     // because of semantic ambiguity resolution in integerValueCheck
@@ -592,9 +595,8 @@ public class AadlBaTypeChecker
     if(tmp != null)
     {
       result.setIntegerValue(tmp) ;
-      Identifier unitId = dbt.getUnitId();
-      result.setUnit((UnitLiteral) unitId.getOsateRef()) ;
-      result.setLocationReference(dbt.getLocationReference());
+      result.setUnit(bt.getUnit()) ;
+      result.setLocationReference(bt.getLocationReference());
     }
     
     return tmp != null ;
@@ -725,7 +727,7 @@ public class AadlBaTypeChecker
     TypeHolder th1 = simpleExpressionCheck(r.getFirstExpression()) ;
     TypeHolder th2 = null ;
 
-    if(r.isSetRelationalOperator())
+    if(r.getSecondExpression()!=null)
     {
       th2 = simpleExpressionCheck(r.getSecondExpression()) ; 
     }
@@ -1260,6 +1262,13 @@ public class AadlBaTypeChecker
       
       switch(t)
       {
+        case INTERNAL_FEATURE:
+        {
+          InternalFeatureHolder ifh = _fact.createInternalFeatureHolder() ;
+          ifh.setInternalFeature((InternalFeature)id.getOsateRef());
+          result = ifh;
+          break;
+        }
         case IN_DATA_PORT:
         case OUT_DATA_PORT:
         case IN_OUT_DATA_PORT:
@@ -1779,7 +1788,7 @@ public class AadlBaTypeChecker
     if(bab.getTimeout() != null)
     {
       BehaviorTime resolvedTime = _fact.createBehaviorTime() ;
-      result = behaviorTimeCheck((DeclarativeTime) bab.getTimeout(),
+      result = behaviorTimeCheck(bab.getTimeout(),
                                  resolvedTime) ;
       bab.setTimeout(resolvedTime) ;
     }
@@ -1877,7 +1886,7 @@ public class AadlBaTypeChecker
   private boolean forOrForAllStatementCheck(ForOrForAllStatement stat)
   {
     IterativeVariable itVar = stat.getIterativeVariable() ;
-    boolean result = iterativeVariableCheck(itVar) ;
+    boolean result = true;
     
     result &= behaviorActionsCheck(stat.getBehaviorActions(), stat) ;
     
@@ -1993,22 +2002,6 @@ public class AadlBaTypeChecker
     }
     return result ;
   }
-  
-  private boolean iterativeVariableCheck(IterativeVariable itVar)
-  {
-    QualifiedNamedElement qne = (QualifiedNamedElement) 
-                                                     itVar.getDataClassifier() ;
-    
-    // The statement's unique component reference reference has to be   
-    // data classifier.
-    Classifier dataClassifier = uniqueComponentClassifierReferenceResolver(qne,
-                                                      TypeCheckRule.DATA_UCCR) ;
-    
-    itVar.setDataClassifier((DataClassifier) dataClassifier) ;
-    
-    return dataClassifier != null ;
-  }
-
 
   // This method checks the given object and returns a element values
   // resolved from semantic ambiguities. On error, reports error and returns
@@ -2194,11 +2187,17 @@ public class AadlBaTypeChecker
   {
     BehaviorTime resolvedTime = _fact.createBehaviorTime() ;
     
-    boolean result = behaviorTimeCheck((DeclarativeTime) ta.getLowerTime(),
-                                       resolvedTime);
-    ta.setLowerTime(resolvedTime) ;
+    boolean result = true;
+    if(ta.getLowerTime() instanceof DeclarativeTime)
+    {
+      behaviorTimeCheck((DeclarativeTime) ta.getLowerTime(),
+                        resolvedTime);
+      ta.setLowerTime(resolvedTime) ;
+    }
+      
 
-    if (ta.getUpperTime() != null)
+    if (ta.getUpperTime() != null 
+        && ta.getUpperTime() instanceof DeclarativeTime)
     {
       resolvedTime = _fact.createBehaviorTime() ;
       result &= behaviorTimeCheck((DeclarativeTime) ta.getUpperTime(),
@@ -2376,6 +2375,10 @@ public class AadlBaTypeChecker
    */
   private CommunicationAction communicationActionCheck(CommunicationAction ca)
   {
+    boolean isDeclarative = ca instanceof CommAction;
+    if(!isDeclarative)
+      return ca;
+    
     CommAction comAct = (CommAction) ca ;
     
     // Subprogram qualified classifier call.
@@ -2383,7 +2386,7 @@ public class AadlBaTypeChecker
     {
       return qualifiedSubprogramClassifierCallActionResolver(comAct) ;
     }
-    // Port dequeue call.
+    // Port dequeue call. 
     else if(comAct.isPortDequeue())
     {
       return portDequeueActionResolver(comAct) ;
@@ -2424,7 +2427,7 @@ public class AadlBaTypeChecker
       // Port send action case.
       if(resolvedRef.get(0) instanceof PortHolder)
       {
-        ActualPortHolder portHolder = (ActualPortHolder) resolvedRef.get(0) ;
+        FeatureHolder portHolder = (FeatureHolder) resolvedRef.get(0) ;
         return portSendActionResolver(portHolder, comAct) ;
       }
       else // Subprogram call action case. 
@@ -2504,7 +2507,7 @@ public class AadlBaTypeChecker
     }
   }
 
-  private CommunicationAction portSendActionResolver(ActualPortHolder portHolder,
+  private CommunicationAction portSendActionResolver(FeatureHolder portHolder,
                                                      CommAction comAct)
   {
     PortSendAction portSendActionResult = _fact.createPortSendAction() ;
@@ -3124,6 +3127,10 @@ public class AadlBaTypeChecker
   // semantic ambiguities. On error, reports error and returns null.
   private Target targetCheck(Target tar)
   {
+    boolean isDeclarative = tar instanceof Reference;
+    if( !isDeclarative)
+      return tar;
+    
     TypeCheckRule stopOnThisRule = TypeCheckRule.TARGET_STOP_RULE ; 
     TypeCheckRule[] checkRules = new TypeCheckRule[]
           {
@@ -3314,6 +3321,11 @@ public class AadlBaTypeChecker
            FeatureType.OUT_EVENT_DATA_PORT,
            FeatureType.IN_OUT_EVENT_DATA_PORT}),
 
+    INTERNAL_FEATURE("internal feature", new Enum[]
+        {
+         FeatureType.INTERNAL_FEATURE
+        }),
+    
     PORT("port", new Enum[]
           {FeatureType.IN_DATA_PORT,
            FeatureType.IN_OUT_DATA_PORT,

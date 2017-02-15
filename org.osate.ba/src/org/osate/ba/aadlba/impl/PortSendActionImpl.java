@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.InternalEObject ;
 import org.eclipse.emf.ecore.impl.ENotificationImpl ;
 import org.osate.ba.aadlba.AadlBaPackage ;
 import org.osate.ba.aadlba.ActualPortHolder ;
+import org.osate.ba.aadlba.FeatureHolder;
 import org.osate.ba.aadlba.PortSendAction ;
 import org.osate.ba.aadlba.ValueExpression ;
 import org.osate.ba.utils.visitor.IBAVisitor ;
@@ -37,11 +38,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.PortSendActionImpl#getPort <em>Port</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.PortSendActionImpl#getValueExpression <em>Value Expression</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -55,7 +56,7 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
    * @generated
    * @ordered
    */
-  protected ActualPortHolder port;
+  protected FeatureHolder port;
 
   /**
    * The cached value of the '{@link #getValueExpression() <em>Value Expression</em>}' containment reference.
@@ -93,7 +94,7 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
    * <!-- end-user-doc -->
    * @generated
    */
-  public ActualPortHolder getPort()
+  public FeatureHolder getPort()
   {
     return port;
   }
@@ -103,9 +104,9 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetPort(ActualPortHolder newPort, NotificationChain msgs)
+  public NotificationChain basicSetPort(FeatureHolder newPort, NotificationChain msgs)
   {
-    ActualPortHolder oldPort = port;
+    FeatureHolder oldPort = port;
     port = newPort;
     if (eNotificationRequired())
     {
@@ -120,7 +121,7 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setPort(ActualPortHolder newPort)
+  public void setPort(FeatureHolder newPort)
   {
     if (newPort != port)
     {
@@ -231,7 +232,7 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
     switch (featureID)
     {
       case AadlBaPackage.PORT_SEND_ACTION__PORT:
-        setPort((ActualPortHolder)newValue);
+        setPort((FeatureHolder)newValue);
         return;
       case AadlBaPackage.PORT_SEND_ACTION__VALUE_EXPRESSION:
         setValueExpression((ValueExpression)newValue);
@@ -251,7 +252,7 @@ public class PortSendActionImpl extends BehaviorElementImpl implements PortSendA
     switch (featureID)
     {
       case AadlBaPackage.PORT_SEND_ACTION__PORT:
-        setPort((ActualPortHolder)null);
+        setPort((FeatureHolder)null);
         return;
       case AadlBaPackage.PORT_SEND_ACTION__VALUE_EXPRESSION:
         setValueExpression((ValueExpression)null);

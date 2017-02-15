@@ -678,7 +678,15 @@ public enum FeatureType implements Enumerator
    * @generated
    * @ordered
    */
-  PROCESS_CLASSIFIER(64, "PROCESS_CLASSIFIER", "process classifier");
+  PROCESS_CLASSIFIER(64, "PROCESS_CLASSIFIER", "process classifier"), /**
+   * The '<em><b>INTERNAL FEATURE</b></em>' literal object.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #INTERNAL_FEATURE_VALUE
+   * @generated
+   * @ordered
+   */
+  INTERNAL_FEATURE(65, "INTERNAL_FEATURE", "INTERNAL_FEATURE");
 
   /**
    * The '<em><b>NONE</b></em>' literal value.
@@ -1656,6 +1664,21 @@ public enum FeatureType implements Enumerator
   public static final int PROCESS_CLASSIFIER_VALUE = 64;
 
   /**
+   * The '<em><b>INTERNAL FEATURE</b></em>' literal value.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of '<em><b>INTERNAL FEATURE</b></em>' literal object isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @see #INTERNAL_FEATURE
+   * @model
+   * @generated
+   * @ordered
+   */
+  public static final int INTERNAL_FEATURE_VALUE = 65;
+
+  /**
    * An array of all the '<em><b>Feature Type</b></em>' enumerators.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1729,6 +1752,7 @@ public enum FeatureType implements Enumerator
       SYSTEM_SUBCOMPONENT,
       PROCESSOR_CLASSIFIER,
       PROCESS_CLASSIFIER,
+      INTERNAL_FEATURE,
     };
 
   /**
@@ -1743,6 +1767,8 @@ public enum FeatureType implements Enumerator
    * Returns the '<em><b>Feature Type</b></em>' literal with the specified literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static FeatureType get(String literal)
@@ -1762,6 +1788,8 @@ public enum FeatureType implements Enumerator
    * Returns the '<em><b>Feature Type</b></em>' literal with the specified name.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static FeatureType getByName(String name)
@@ -1781,6 +1809,8 @@ public enum FeatureType implements Enumerator
    * Returns the '<em><b>Feature Type</b></em>' literal with the specified integer value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static FeatureType get(int value)
@@ -1852,6 +1882,7 @@ public enum FeatureType implements Enumerator
       case SYSTEM_SUBCOMPONENT_VALUE: return SYSTEM_SUBCOMPONENT;
       case PROCESSOR_CLASSIFIER_VALUE: return PROCESSOR_CLASSIFIER;
       case PROCESS_CLASSIFIER_VALUE: return PROCESS_CLASSIFIER;
+      case INTERNAL_FEATURE_VALUE: return INTERNAL_FEATURE;
     }
     return null;
   }

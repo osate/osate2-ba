@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList ;
 import org.eclipse.emf.ecore.util.InternalEList ;
 
 import org.osate.aadl2.Element ;
+import org.osate.aadl2.Subprogram ;
 import org.osate.ba.aadlba.BehaviorElement ;
 import org.osate.ba.aadlba.ParameterLabel ;
 import org.osate.ba.aadlba.Target ;
@@ -54,6 +55,7 @@ import org.osate.ba.declarative.Reference ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getOsateRef <em>Osate Ref</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getBaRef <em>Ba Ref</em>}</li>
@@ -65,8 +67,8 @@ import org.osate.ba.declarative.Reference ;
  *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getTarget <em>Target</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getReference <em>Reference</em>}</li>
+ *   <li>{@link org.osate.ba.declarative.impl.CommActionImpl#getSubprogram <em>Subprogram</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -213,6 +215,16 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
   protected Reference reference ;
 
   /**
+   * The cached value of the '{@link #getSubprogram() <em>Subprogram</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSubprogram()
+   * @generated
+   * @ordered
+   */
+  protected Subprogram subprogram ;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -248,8 +260,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.COMM_ACTION__OSATE_REF, oldOsateRef,
-                osateRef)) ;
+                                        DeclarativePackage.COMM_ACTION__OSATE_REF,
+                                        oldOsateRef, osateRef)) ;
       }
     }
     return osateRef ;
@@ -276,7 +288,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     osateRef = newOsateRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__OSATE_REF, oldOsateRef, osateRef)) ;
+                                    DeclarativePackage.COMM_ACTION__OSATE_REF,
+                                    oldOsateRef, osateRef)) ;
   }
 
   /**
@@ -294,7 +307,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
       {
         if(eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-                DeclarativePackage.COMM_ACTION__BA_REF, oldBaRef, baRef)) ;
+                                        DeclarativePackage.COMM_ACTION__BA_REF,
+                                        oldBaRef, baRef)) ;
       }
     }
     return baRef ;
@@ -321,7 +335,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     baRef = newBaRef ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__BA_REF, oldBaRef, baRef)) ;
+                                    DeclarativePackage.COMM_ACTION__BA_REF,
+                                    oldBaRef, baRef)) ;
   }
 
   /**
@@ -333,10 +348,10 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
   {
     if(parameters == null)
     {
-      parameters =
-            new EObjectContainmentEList.Unsettable<ParameterLabel>(
-                  ParameterLabel.class, this,
-                  DeclarativePackage.COMM_ACTION__PARAMETERS) ;
+      parameters = new EObjectContainmentEList.Unsettable<ParameterLabel>(
+                                                                          ParameterLabel.class,
+                                                                          this,
+                                                                          DeclarativePackage.COMM_ACTION__PARAMETERS) ;
     }
     return parameters ;
   }
@@ -359,8 +374,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    */
   public boolean isSetParameters()
   {
-    return parameters != null &&
-          ((InternalEList.Unsettable<?>) parameters).isSet() ;
+    return parameters != null && ((InternalEList.Unsettable<?>) parameters)
+                                                                           .isSet() ;
   }
 
   /**
@@ -384,8 +399,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     portFreeze = newPortFreeze ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__PORT_FREEZE, oldPortFreeze,
-            portFreeze)) ;
+                                    DeclarativePackage.COMM_ACTION__PORT_FREEZE,
+                                    oldPortFreeze, portFreeze)) ;
   }
 
   /**
@@ -409,8 +424,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     portDequeue = newPortDequeue ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__PORT_DEQUEUE, oldPortDequeue,
-            portDequeue)) ;
+                                    DeclarativePackage.COMM_ACTION__PORT_DEQUEUE,
+                                    oldPortDequeue, portDequeue)) ;
   }
 
   /**
@@ -434,7 +449,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     lock = newLock ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__LOCK, oldLock, lock)) ;
+                                    DeclarativePackage.COMM_ACTION__LOCK,
+                                    oldLock, lock)) ;
   }
 
   /**
@@ -458,7 +474,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     unlock = newUnlock ;
     if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__UNLOCK, oldUnlock, unlock)) ;
+                                    DeclarativePackage.COMM_ACTION__UNLOCK,
+                                    oldUnlock, unlock)) ;
   }
 
   /**
@@ -483,9 +500,11 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     target = newTarget ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.COMM_ACTION__TARGET, oldTarget, newTarget) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.COMM_ACTION__TARGET,
+                                                             oldTarget,
+                                                             newTarget) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -505,25 +524,23 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     {
       NotificationChain msgs = null ;
       if(target != null)
-        msgs =
-              ((InternalEObject) target)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.COMM_ACTION__TARGET,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) target).eInverseRemove(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.COMM_ACTION__TARGET,
+                                                         null, msgs) ;
       if(newTarget != null)
-        msgs =
-              ((InternalEObject) newTarget)
-                    .eInverseAdd(this, EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.COMM_ACTION__TARGET,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newTarget).eInverseAdd(this,
+                                                         EOPPOSITE_FEATURE_BASE -
+                                                               DeclarativePackage.COMM_ACTION__TARGET,
+                                                         null, msgs) ;
       msgs = basicSetTarget(newTarget, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__TARGET, newTarget, newTarget)) ;
+                                    DeclarativePackage.COMM_ACTION__TARGET,
+                                    newTarget, newTarget)) ;
   }
 
   /**
@@ -541,17 +558,19 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetQualifiedName(QualifiedNamedElement newQualifiedName,
+  public NotificationChain basicSetQualifiedName(
+                                                 QualifiedNamedElement newQualifiedName,
                                                  NotificationChain msgs)
   {
     QualifiedNamedElement oldQualifiedName = qualifiedName ;
     qualifiedName = newQualifiedName ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
-                  oldQualifiedName, newQualifiedName) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
+                                                             oldQualifiedName,
+                                                             newQualifiedName) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -571,27 +590,23 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     {
       NotificationChain msgs = null ;
       if(qualifiedName != null)
-        msgs =
-              ((InternalEObject) qualifiedName)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) qualifiedName).eInverseRemove(this,
+                                                                EOPPOSITE_FEATURE_BASE -
+                                                                      DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
+                                                                null, msgs) ;
       if(newQualifiedName != null)
-        msgs =
-              ((InternalEObject) newQualifiedName)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newQualifiedName).eInverseAdd(this,
+                                                                EOPPOSITE_FEATURE_BASE -
+                                                                      DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
+                                                                null, msgs) ;
       msgs = basicSetQualifiedName(newQualifiedName, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__QUALIFIED_NAME, newQualifiedName,
-            newQualifiedName)) ;
+                                    DeclarativePackage.COMM_ACTION__QUALIFIED_NAME,
+                                    newQualifiedName, newQualifiedName)) ;
   }
 
   /**
@@ -616,10 +631,11 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     reference = newReference ;
     if(eNotificationRequired())
     {
-      ENotificationImpl notification =
-            new ENotificationImpl(this, Notification.SET,
-                  DeclarativePackage.COMM_ACTION__REFERENCE, oldReference,
-                  newReference) ;
+      ENotificationImpl notification = new ENotificationImpl(this,
+                                                             Notification.SET,
+                                                             DeclarativePackage.COMM_ACTION__REFERENCE,
+                                                             oldReference,
+                                                             newReference) ;
       if(msgs == null)
         msgs = notification ;
       else
@@ -639,27 +655,70 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
     {
       NotificationChain msgs = null ;
       if(reference != null)
-        msgs =
-              ((InternalEObject) reference)
-                    .eInverseRemove(this,
-                                    EOPPOSITE_FEATURE_BASE -
-                                          DeclarativePackage.COMM_ACTION__REFERENCE,
-                                    null, msgs) ;
+        msgs = ((InternalEObject) reference).eInverseRemove(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.COMM_ACTION__REFERENCE,
+                                                            null, msgs) ;
       if(newReference != null)
-        msgs =
-              ((InternalEObject) newReference)
-                    .eInverseAdd(this,
-                                 EOPPOSITE_FEATURE_BASE -
-                                       DeclarativePackage.COMM_ACTION__REFERENCE,
-                                 null, msgs) ;
+        msgs = ((InternalEObject) newReference).eInverseAdd(this,
+                                                            EOPPOSITE_FEATURE_BASE -
+                                                                  DeclarativePackage.COMM_ACTION__REFERENCE,
+                                                            null, msgs) ;
       msgs = basicSetReference(newReference, msgs) ;
       if(msgs != null)
         msgs.dispatch() ;
     }
     else if(eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET,
-            DeclarativePackage.COMM_ACTION__REFERENCE, newReference,
-            newReference)) ;
+                                    DeclarativePackage.COMM_ACTION__REFERENCE,
+                                    newReference, newReference)) ;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Subprogram getSubprogram()
+  {
+    if(subprogram != null && ((EObject) subprogram).eIsProxy())
+    {
+      InternalEObject oldSubprogram = (InternalEObject) subprogram ;
+      subprogram = (Subprogram) eResolveProxy(oldSubprogram) ;
+      if(subprogram != oldSubprogram)
+      {
+        if(eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+                                        DeclarativePackage.COMM_ACTION__SUBPROGRAM,
+                                        oldSubprogram, subprogram)) ;
+      }
+    }
+    return subprogram ;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+  	 * <!-- end-user-doc -->
+   * @generated
+   */
+  public Subprogram basicGetSubprogram()
+  {
+    return subprogram ;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+  	 * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSubprogram(Subprogram newSubprogram)
+  {
+    Subprogram oldSubprogram = subprogram ;
+    subprogram = newSubprogram ;
+    if(eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET,
+                                    DeclarativePackage.COMM_ACTION__SUBPROGRAM,
+                                    oldSubprogram, subprogram)) ;
   }
 
   /**
@@ -669,13 +728,13 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd,
-                                          int featureID,
-                                          NotificationChain msgs)
+                                          int featureID, NotificationChain msgs)
   {
     switch ( featureID )
     {
       case DeclarativePackage.COMM_ACTION__PARAMETERS :
-        return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs) ;
+        return ((InternalEList<?>) getParameters()).basicRemove(otherEnd,
+                                                                msgs) ;
       case DeclarativePackage.COMM_ACTION__TARGET :
         return basicSetTarget(null, msgs) ;
       case DeclarativePackage.COMM_ACTION__QUALIFIED_NAME :
@@ -692,9 +751,7 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    * @generated
    */
   @Override
-  public Object eGet(int featureID,
-                     boolean resolve,
-                     boolean coreType)
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch ( featureID )
     {
@@ -722,6 +779,10 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
         return getQualifiedName() ;
       case DeclarativePackage.COMM_ACTION__REFERENCE :
         return getReference() ;
+      case DeclarativePackage.COMM_ACTION__SUBPROGRAM :
+        if(resolve)
+          return getSubprogram() ;
+        return basicGetSubprogram() ;
     }
     return super.eGet(featureID, resolve, coreType) ;
   }
@@ -733,8 +794,7 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID,
-                   Object newValue)
+  public void eSet(int featureID, Object newValue)
   {
     switch ( featureID )
     {
@@ -768,6 +828,9 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
         return ;
       case DeclarativePackage.COMM_ACTION__REFERENCE :
         setReference((Reference) newValue) ;
+        return ;
+      case DeclarativePackage.COMM_ACTION__SUBPROGRAM :
+        setSubprogram((Subprogram) newValue) ;
         return ;
     }
     super.eSet(featureID, newValue) ;
@@ -813,6 +876,9 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
       case DeclarativePackage.COMM_ACTION__REFERENCE :
         setReference((Reference) null) ;
         return ;
+      case DeclarativePackage.COMM_ACTION__SUBPROGRAM :
+        setSubprogram((Subprogram) null) ;
+        return ;
     }
     super.eUnset(featureID) ;
   }
@@ -847,6 +913,8 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
         return qualifiedName != null ;
       case DeclarativePackage.COMM_ACTION__REFERENCE :
         return reference != null ;
+      case DeclarativePackage.COMM_ACTION__SUBPROGRAM :
+        return subprogram != null ;
     }
     return super.eIsSet(featureID) ;
   }
@@ -857,8 +925,7 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    * @generated
    */
   @Override
-  public int eBaseStructuralFeatureID(int derivedFeatureID,
-                                      Class<?> baseClass)
+  public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {
@@ -881,8 +948,7 @@ public class CommActionImpl extends BehaviorElementImpl implements CommAction
    * @generated
    */
   @Override
-  public int eDerivedStructuralFeatureID(int baseFeatureID,
-                                         Class<?> baseClass)
+  public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass)
   {
     if(baseClass == DeclarativeBehaviorElement.class)
     {

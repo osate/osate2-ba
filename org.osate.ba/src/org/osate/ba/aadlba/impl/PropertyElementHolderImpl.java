@@ -43,11 +43,11 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.PropertyElementHolderImpl#getArrayIndexes <em>Array Indexes</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.PropertyElementHolderImpl#getElement <em>Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

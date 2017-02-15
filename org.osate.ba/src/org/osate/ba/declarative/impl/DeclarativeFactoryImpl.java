@@ -37,7 +37,7 @@ import org.osate.ba.declarative.* ;
  * @generated
  */
 public class DeclarativeFactoryImpl extends EFactoryImpl implements
-                                                        DeclarativeFactory
+                                    DeclarativeFactory
 {
   /**
    * Creates the default factory implementation.
@@ -50,8 +50,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
     try
     {
       DeclarativeFactory theDeclarativeFactory =
-            (DeclarativeFactory) EPackage.Registry.INSTANCE
-                  .getEFactory(DeclarativePackage.eNS_URI) ;
+                                               (DeclarativeFactory) EPackage.Registry.INSTANCE.getEFactory(DeclarativePackage.eNS_URI) ;
       if(theDeclarativeFactory != null)
       {
         return theDeclarativeFactory ;
@@ -107,9 +106,13 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
         return createQualifiedNamedElement() ;
       case DeclarativePackage.REFERENCE :
         return createReference() ;
+      case DeclarativePackage.DECLARATIVE_BEHAVIOR_STATE_SET :
+        return createDeclarativeBehaviorStateSet() ;
+      case DeclarativePackage.DECLARATIVE_BEHAVIOR_VARIABLE_SET :
+        return createDeclarativeBehaviorVariableSet() ;
       default :
         throw new IllegalArgumentException("The class '" + eClass.getName() +
-              "' is not a valid classifier") ;
+                                           "' is not a valid classifier") ;
     }
   }
 
@@ -120,7 +123,8 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
    */
   public ArrayableIdentifier createArrayableIdentifier()
   {
-    ArrayableIdentifierImpl arrayableIdentifier = new ArrayableIdentifierImpl() ;
+    ArrayableIdentifierImpl arrayableIdentifier =
+                                                new ArrayableIdentifierImpl() ;
     return arrayableIdentifier ;
   }
 
@@ -143,7 +147,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   public DeclarativeArrayDimension createDeclarativeArrayDimension()
   {
     DeclarativeArrayDimensionImpl declarativeArrayDimension =
-          new DeclarativeArrayDimensionImpl() ;
+                                                            new DeclarativeArrayDimensionImpl() ;
     return declarativeArrayDimension ;
   }
 
@@ -155,7 +159,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   public DeclarativeBehaviorTransition createDeclarativeBehaviorTransition()
   {
     DeclarativeBehaviorTransitionImpl declarativeBehaviorTransition =
-          new DeclarativeBehaviorTransitionImpl() ;
+                                                                    new DeclarativeBehaviorTransitionImpl() ;
     return declarativeBehaviorTransition ;
   }
 
@@ -167,7 +171,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   public DeclarativePropertyName createDeclarativePropertyName()
   {
     DeclarativePropertyNameImpl declarativePropertyName =
-          new DeclarativePropertyNameImpl() ;
+                                                        new DeclarativePropertyNameImpl() ;
     return declarativePropertyName ;
   }
 
@@ -179,7 +183,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   public DeclarativePropertyReference createDeclarativePropertyReference()
   {
     DeclarativePropertyReferenceImpl declarativePropertyReference =
-          new DeclarativePropertyReferenceImpl() ;
+                                                                  new DeclarativePropertyReferenceImpl() ;
     return declarativePropertyReference ;
   }
 
@@ -224,7 +228,7 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   public QualifiedNamedElement createQualifiedNamedElement()
   {
     QualifiedNamedElementImpl qualifiedNamedElement =
-          new QualifiedNamedElementImpl() ;
+                                                    new QualifiedNamedElementImpl() ;
     return qualifiedNamedElement ;
   }
 
@@ -237,6 +241,30 @@ public class DeclarativeFactoryImpl extends EFactoryImpl implements
   {
     ReferenceImpl reference = new ReferenceImpl() ;
     return reference ;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeclarativeBehaviorStateSet createDeclarativeBehaviorStateSet()
+  {
+    DeclarativeBehaviorStateSetImpl declarativeBehaviorStateSet =
+                                                                new DeclarativeBehaviorStateSetImpl() ;
+    return declarativeBehaviorStateSet ;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+  	 * <!-- end-user-doc -->
+   * @generated
+   */
+  public DeclarativeBehaviorVariableSet createDeclarativeBehaviorVariableSet()
+  {
+    DeclarativeBehaviorVariableSetImpl declarativeBehaviorVariableSet =
+                                                                      new DeclarativeBehaviorVariableSetImpl() ;
+    return declarativeBehaviorVariableSet ;
   }
 
   /**

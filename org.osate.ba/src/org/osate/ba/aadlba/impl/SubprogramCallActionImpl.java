@@ -43,12 +43,12 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramCallActionImpl#getSubprogram <em>Subprogram</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramCallActionImpl#getParameterLabels <em>Parameter Labels</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.SubprogramCallActionImpl#getProxy <em>Proxy</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

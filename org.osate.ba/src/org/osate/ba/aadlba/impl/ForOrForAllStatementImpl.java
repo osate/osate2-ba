@@ -37,12 +37,12 @@ import org.osate.ba.utils.visitor.IBAVisitor ;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.ba.aadlba.impl.ForOrForAllStatementImpl#getIteratedValues <em>Iterated Values</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.ForOrForAllStatementImpl#isForAll <em>For All</em>}</li>
  *   <li>{@link org.osate.ba.aadlba.impl.ForOrForAllStatementImpl#getIterativeVariable <em>Iterative Variable</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -369,6 +369,8 @@ public enum DataRepresentation implements Enumerator
    * Returns the '<em><b>Data Representation</b></em>' literal with the specified literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param literal the literal.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static DataRepresentation get(String literal)
@@ -388,6 +390,8 @@ public enum DataRepresentation implements Enumerator
    * Returns the '<em><b>Data Representation</b></em>' literal with the specified name.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param name the name.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static DataRepresentation getByName(String name)
@@ -407,6 +411,8 @@ public enum DataRepresentation implements Enumerator
    * Returns the '<em><b>Data Representation</b></em>' literal with the specified integer value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
+   * @param value the integer value.
+   * @return the matching enumerator or <code>null</code>.
    * @generated
    */
   public static DataRepresentation get(int value)
