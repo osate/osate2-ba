@@ -176,7 +176,6 @@ public class DeclarativeUtils
         currentClone.setLocationReference(dbt.getLocationReference()) ;
         clones.add(currentClone) ;
         
-        AadlBaVisitors.putTransitionWhereSrc(srcState, currentClone) ;
       }
     }
     

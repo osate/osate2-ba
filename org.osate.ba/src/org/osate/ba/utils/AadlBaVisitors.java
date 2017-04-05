@@ -304,63 +304,6 @@ public class AadlBaVisitors
 
     ports.add(port) ;
   }
-
-  protected static final Map<BehaviorState, List<BehaviorTransition>> 
-    _SRC_IN_TRANS = new HashMap<BehaviorState, List<BehaviorTransition>>() ;
-
-  
-  
-  /**
-   * Return a list of behavior transitions where the given behavior state is 
-   * the source state. May return empty list.<br><br>
-   * 
-   * The list of behavior transitions is sorted according to:<br><br>
-   * _ the behavior priority (highest to the lowest).<br>
-   * _ the behavior transitions which have "otherwise" execution condition are
-   *   set at the end of the list.<br>
-   * _ in case of equality, the order of behavior transition appearance in the
-   *   aadl code is applied.<br><br>
-   * 
-   * @param state the given behavior state
-   * @return the list of behavior transitions where the given behavior state is 
-   * the source state or an empty list
-   */
-  public static List<BehaviorTransition> getTransitionWhereSrc(BehaviorState
-                                                                state)
-  {
-    List<BehaviorTransition> result = _SRC_IN_TRANS.get(state) ;
-    if(result == null)
-    {
-      result = new BasicEList<BehaviorTransition>(0) ;
-    }
-
-    return result ;
-  }
-
-  /**
-   * Specify that the given behavior state is the source state of the given
-   * behavior transition. 
-   * 
-   * @param state the given behavior state
-   * @param bt the given behavior transition where the the given behavior state
-   * is source
-   */
-  public static void putTransitionWhereSrc(BehaviorState state,
-                                           BehaviorTransition bt)
-  {
-    List<BehaviorTransition> list = _SRC_IN_TRANS.get(state) ;
-    
-    if(list == null)
-    {
-      list = new ArrayList<BehaviorTransition>() ;
-      _SRC_IN_TRANS.put(state, list) ;
-    }
-    
-    if(false == list.contains(bt))
-    {
-      addAndSort(list, bt) ;
-    }
-  }
   
   // Add the given behavior transition to the given list and sort the list.
   // Sort (insertion) behavior transitions list 
